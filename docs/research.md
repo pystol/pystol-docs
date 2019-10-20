@@ -2,87 +2,36 @@
 layout: default
 title: Research
 nav_order: 6
+permalink: /research
 ---
 
-# Configuration
+# Research
 {: .no_toc }
 
+Here you will find references for academic projects and research papers related to Pystol.
 
-Just the Docs has some specific configuration parameters that can be defined in your Jekyll site's _config.yml file.
-{: .fs-6 .fw-300 }
-
-## Table of contents
+## References
 {: .no_toc .text-delta }
 
 1. TOC
 {:toc}
 
----
+### Article 1
 
+This is a brief explanation of the article with its authors and more information.
 
-View this site's [_config.yml](https://github.com/pmarsceill/just-the-docs/tree/master/_config.yml) file as an example.
+### Article 2
 
-## Site logo
+This is a brief explanation of the article with its authors and more information.
 
-```yaml
-# Set a path/url to a logo that will be displayed instead of the title
-logo: "/assets/images/just-the-docs.png"
-```
+### Article 3
 
-## Search
+This is a brief explanation of the article with its authors and more information.
 
-```yaml
-# Enable or disable the site search
-# Supports true (default) or false
-search_enabled: true
+### Article 4
 
-# Enable support for hyphenated search words:
-search_tokenizer_separator: /[\s/]+/
+This is a brief explanation of the article with its authors and more information.
 
-```
+### Article 5
 
-## Aux links
-
-```yaml
-# Aux links for the upper right navigation
-aux_links:
-  "Just the Docs on GitHub":
-    - "//github.com/pmarsceill/just-the-docs"
-```
-
-## Heading anchor links
-
-```yaml
-# Heading anchor links appear on hover over h1-h6 tags in page content
-# allowing users to deep link to a particular heading on a page.
-#
-# Supports true (default) or false/nil
-heading_anchors: true
-```
-
-## Footer content
-
-```yaml
-# Footer content appears at the bottom of every page's main content
-footer_content: "Copyright &copy; 2017-2019 Patrick Marsceill. Distributed by an <a href=\"https://github.com/pmarsceill/just-the-docs/tree/master/LICENSE.txt\">MIT license.</a>"
-```
-
-## Color scheme
-
-```yaml
-# Color scheme currently only supports "dark" or nil (default)
-color_scheme: "dark"
-```
-<button class="btn js-toggle-dark-mode">Preview dark color scheme</button>
-
-<script type="text/javascript" src="{{ "/assets/js/dark-mode-preview.js" | absolute_url }}"></script>
-
-See [Customization]({{ site.baseurl }}{% link docs/features.md %}) for more information.
-
-## Google Analytics
-
-```yaml
-# Google Analytics Tracking (optional)
-# e.g, UA-1234567-89
-ga_tracking: UA-5555555-55
-```
+This is a brief explanation of the article with its authors and more information.
