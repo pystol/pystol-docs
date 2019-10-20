@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Tables
-parent: UI Components
-nav_order: 4
+title: Pystol
+parent: Installing
+nav_order: 2
 ---
 
 # Tables

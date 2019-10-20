@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Layout
-parent: Utilities
+title: Wordpress and MySQL
+parent: Example architectures
 nav_order: 2
 ---
 

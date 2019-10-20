@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Code
-parent: UI Components
-nav_order: 6
+title: Kubernetes
+parent: Installing
+nav_order: 1
 ---
 
 # Code

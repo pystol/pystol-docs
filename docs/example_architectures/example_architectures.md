@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Utilities
-nav_order: 4
+title: Example architectures
+nav_order: 5
 has_children: true
-permalink: docs/utilities
+permalink: docs/example_architectures
 ---
 
 # Utilities

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Color
-parent: Utilities
-nav_order: 3
+title: Apache spark
+parent: Example architectures
+nav_order: 1
 ---
 
 # Color Utilities
