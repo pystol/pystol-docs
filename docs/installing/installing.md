@@ -8,4 +8,6 @@ permalink: /installing
 
 # Installing
 
-This section will describe to fully deploy and use Pystol in your Kubernetes based infrastructure.
+This section will describe how to
+fully install, deploy and use Pystol
+in your Kubernetes based infrastructure.

@@ -9,7 +9,8 @@ permalink: /installing/kubernetes
 # Installing Kubernetes
 {: .no_toc }
 
-Deploying the cluster instructions.
+This guide uses MiniKube/MiniShift to demonstrate deployment and operation of Pystol
+in a single-node Kubernetes cluster.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -19,22 +20,69 @@ Deploying the cluster instructions.
 
 ## Pre-requirements
 
-Here we describe the section.
+The MiniKube/MiniShift VM requires approximately 4GB
+of RAM and supports hypervisors like
+VirtualBox/HyperV/KVM
+that run on Linux, macOS, and Windows.
 
 ---
 
-## Installing
+## Installing Minikube on Windows with VirtualBox
 
-Here we describe the section.
+Here we have simple Powershell script to have installed
+MiniKube on a Windows/VirtualBox machine.
+
+```powershell
+<#  
+.SYNOPSIS  
+    Install MiniKube in Windows with VirtualBox
+
+Set-ExecutionPolicy Unrestricted
+
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+# Install Git
+choco install git.install --params "/GitAndUnixToolsOnPath /NoAutoCrlf" -y
+
+# Install VirtualBox
+choco install virtualbox -y
+
+#Install MiniKube
+choco install minikube -y
+
+# Install the Kubernetes client
+choco install kubernetes-cli -y
+
+# Install Docker
+choco install docker-cli -y
+
+# Install Docker machine
+choco install docker-machine -y
+
+# Configure MiniKube to use VirtualBox
+minikube config set vm-driver virtualbox
+minikube config set memory 2048
+minikube config set disk-size 10000MB
+
+# Start MiniKube
+minikube start
+minikube addons enable dashboard
+minikube status
+
+# To start the dashboard run
+# minikube dashboard
+```
 
 ---
 
-## Deploying Minikube
+## Installing Minikube on CentOS 7 with KVM
 
-Here we describe the section.
+Please refer to [this blog post](https://www.anstack.com/blog/2019/10/13/oil-painting-and-installing-minikube-in-centos-7.html) for further details.
 
 ---
 
-## Testing the deployment
+## Result
 
-Here we describe the section.
+You should have your containers platform deployed successfully and ready to start your development and tests.
+
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/installing_minikube.PNG)
