@@ -6,22 +6,7 @@ description: "Pystol.org documentation"
 permalink: /
 ---
 
-![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/logo_readme.png)
-{: .text-center }
-
-**An open source, self-hosted, chaos engineering toolbox**
-{: .text-center }
-
-[![Docker build](https://github.com/pystol/pystol/workflows/docker-image-build/badge.svg)](https://github.com/pystol/pystol/actions?workflow=docker-image-build)
-[![NodeJS build](https://github.com/pystol/pystol/workflows/nodejs-build/badge.svg)](https://github.com/pystol/pystol/actions?workflow=nodejs-build)
-[![PyTest build](https://github.com/pystol/pystol/workflows/pytest-build/badge.svg)](https://github.com/pystol/pystol/actions?workflow=pytest-build)
-[![Docs build](https://github.com/pystol/pystol-docs/workflows/jekyll-docs-build/badge.svg)](https://github.com/pystol/pystol-docs/actions?workflow=jekyll-docs-build)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-{: .text-center }
-
-A brief introduction about what Pystol is.
-
----
+{% include_relative README.md %}
 
 ## Repositories
 
@@ -29,10 +14,6 @@ A brief introduction about what Pystol is.
 * Pystol [example templates](https://github.com/pystol/pystol-templates)
 * Pystol [official documentation](https://github.com/pystol/pystol-docs)
 * Pystol [landing page](https://github.com/pystol/pystol.github.io)
-
-## License
-
-Pystol is distributed by an [Apache license](https://github.com/pystol/pystol/tree/master/LICENSE).
 
 ## Contributing
 
