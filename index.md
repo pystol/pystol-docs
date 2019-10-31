@@ -15,6 +15,20 @@ permalink: /
 * Pystol [official documentation](https://github.com/pystol/pystol-docs)
 * Pystol [landing page](https://github.com/pystol/pystol.github.io)
 
+## Container images
+
+All pystol official container images are hosted in Quay.io under
+the [Pystol organization](https://quay.io/organization/pystol).
+
+There you will find two repositories:
+
+* The Pystol [staging repository](https://quay.io/repository/pystol/pystol-operator-staging).
+Here you will find all the container images from the upstream end-to-end jobs from the GitHub
+Actions jobs.
+
+* The Pystol [stable repository](https://quay.io/repository/pystol/pystol-operator-stable).
+Here you will find all the container images from the stable branches.
+
 ## Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,

@@ -155,7 +155,7 @@ If you noticed, inside the template for the operator deployment
 ```
 containers:
 - name: pystol-ui
-  image: pystol/operator:latest
+  image: quay.io/pystol/pystol-operator-stable:latest
 ```
 
 and `https://github.com/pystol/pystol/blob/master/templates/operator.yaml#L49..51`
@@ -163,12 +163,12 @@ and `https://github.com/pystol/pystol/blob/master/templates/operator.yaml#L49..5
 ```
 containers:
 - name: pystol-controller
-  image: pystol/operator:latest
+  image: quay.io/pystol/pystol-operator-stable:latest
 ```
 
-the operator is configured to fetch the image `pystol/operator:latest` automatically
+the operator is configured to fetch the image `pystol-operator-stable:latest` automatically
 using `imagePullPolicy: Always` for both pods by default from
-[DockerHub](https://cloud.docker.com/u/pystol/repository/docker/pystol/operator).
+[Quay](https://quay.io/repository/pystol/pystol-operator-stable).
 
 Now, we need to make our deployment to fetch the image with the local
 changes, so we can see the updates in the MiniKube node.
@@ -183,17 +183,22 @@ docker image ls
 
 Let's update the content of the file
 `https://github.com/pystol/pystol/blob/master/templates/operator.yaml`
-locally and replace `image: pystol/operator:latest` with,
+locally and replace `quay.io/pystol/pystol-operator-stable:latest` with,
 `image: localhost:5000/operator:latest`.
 
-This is already done to speedup the creation of
-development environments in the
-[GitHub repository](https://github.com/pystol/pystol/blob/master/templates/development_environment/operator.yaml) file, so,
+We will do this by replacing the strings directly from the yaml
+template, so,
 update/deploy the Pystol operator directly by running:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/ccamacho/pystol/master/templates/development_environment/operator.yaml
+
+# Now we need to deploy the operator using the GPR image we created in the previous steps
+wget https://raw.githubusercontent.com/pystol/pystol/master/templates/operator.yaml
+cat operator.yaml | \
+  sed "s/image\: quay\.io\/pystol\/pystol-operator-stable\:latest/image\: localhost\:5000\/operator\:latest/g" | \
+  kubectl apply -f -
+
 kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/crd.yaml
 ```
 
