@@ -190,14 +190,31 @@ We will do this by replacing the strings directly from the yaml
 template, so,
 update/deploy the Pystol operator directly by running:
 
+**Linux**
+
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/rbac.yaml
 
 # Now we need to deploy the operator using the GPR image we created in the previous steps
+# If you run operator.yaml without updating the image localtion, you will deploy
+# whatever is in latest and you will not be able to see your changes.
 wget https://raw.githubusercontent.com/pystol/pystol/master/templates/operator.yaml
 cat operator.yaml | \
   sed "s/image\: quay\.io\/pystol\/pystol-operator-stable\:latest/image\: localhost\:5000\/operator\:latest/g" | \
   kubectl apply -f -
+
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/crd.yaml
+```
+**Windows**
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/rbac.yaml
+
+# Download the operator.yaml file and make the changes manually
+# until the replacement command for Windows is published.
+# If you run operator.yaml without updating the image localtion, you will deploy
+# whatever is in latest and you will not be able to see your changes.
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/operator.yaml
 
 kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/crd.yaml
 ```

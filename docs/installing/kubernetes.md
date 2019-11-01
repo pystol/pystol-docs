@@ -32,6 +32,13 @@ that run on Linux, macOS, and Windows.
 Here we have simple Powershell script to have installed
 MiniKube on a Windows/VirtualBox machine.
 
+**For the Windows installation use the
+Windows PowerShell Integrated Scripting Environment (ISE)**
+This is a  is a GUI-based application to assist with writing
+and debugging PowerShell scripts. System administrators,
+developers and other IT professionals can use PowerShell ISE
+to run commands from the application instead of the PowerShell console.
+
 ```powershell
 <#  
 .SYNOPSIS  
