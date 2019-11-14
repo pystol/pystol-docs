@@ -43,9 +43,9 @@ to your containers platform deployed, either with bash of Powershell
 and execute.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/operator.yaml
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/crd.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/operator.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/crd.yaml
 ```
 
 All the previous commands should end correctly and without any errors.

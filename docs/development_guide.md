@@ -33,6 +33,18 @@ minikube start
 
 ---
 
+## Install Helm
+
+We need to install Helm in order to be able to
+render the templates.
+
+```
+curl -L https://git.io/get_helm.sh | bash
+helm init --client-only
+```
+
+---
+
 ## Creating a local registry for pushing dev images
 
 Create a local registry listening in the 5000 port.
@@ -40,7 +52,7 @@ We have a template in the `development_environment`
 folder for deploying this local registry automatically.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/development_environment/kube-registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/development_environment/kube-registry.yaml
 ```
 
 Now, we need to forward the 5000 port.
@@ -150,25 +162,24 @@ docker push localhost:5000/operator
 ## Deploy Pystol from the local registry
 
 If you noticed, inside the template for the operator deployment
-`https://github.com/pystol/pystol/blob/master/templates/operator.yaml#L17..L19`
+`https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml#L17..L19`
 
 ```
 containers:
 - name: pystol-ui
-  image: quay.io/pystol/pystol-operator-stable:latest
+  image: {{ .Values.appSettings.pystol.ui.image }}
 ```
 
-and `https://github.com/pystol/pystol/blob/master/templates/operator.yaml#L49..51`
+and `https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml#L49..51`
 
 ```
 containers:
 - name: pystol-controller
-  image: quay.io/pystol/pystol-operator-stable:latest
+  image: {{ .Values.appSettings.pystol.controller.image }}
 ```
 
-the operator is configured to fetch the image `pystol-operator-stable:latest` automatically
-using `imagePullPolicy: Always` for both pods by default from
-[Quay](https://quay.io/repository/pystol/pystol-operator-stable).
+the operator is configured to fetch the image configured in the values.yaml file
+after rendering the template using `helm template`.
 
 Now, we need to make our deployment to fetch the image with the local
 changes, so we can see the updates in the MiniKube node.
@@ -182,41 +193,43 @@ docker image ls
 ```
 
 Let's update the content of the file
-`https://github.com/pystol/pystol/blob/master/templates/operator.yaml`
-locally and replace `quay.io/pystol/pystol-operator-stable:latest` with,
-`image: localhost:5000/operator:latest`.
+`https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml`.
 
-We will do this by replacing the strings directly from the yaml
-template, so,
-update/deploy the Pystol operator directly by running:
+We will do this by using helm template to replace the values with a custom one.
 
 **Linux**
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/rbac.yaml
+kubectl apply -f ./helm/templates/rbac.yaml
 
-# Now we need to deploy the operator using the GPR image we created in the previous steps
-# If you run operator.yaml without updating the image localtion, you will deploy
+# Now we need to deploy the operator using the image we created in the previous steps
+# If you run operator.yaml without updating the image location, you will deploy
 # whatever is in latest and you will not be able to see your changes.
-wget https://raw.githubusercontent.com/pystol/pystol/master/templates/operator.yaml
-cat operator.yaml | \
-  sed "s/image\: quay\.io\/pystol\/pystol-operator-stable\:latest/image\: localhost\:5000\/operator\:latest/g" | \
-  kubectl apply -f -
 
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/crd.yaml
+helm template \
+  --set appSettings.pystol.controller.image=localhost:5000/operator:latest \
+  --set appSettings.pystol.ui.image=localhost:5000/operator:latest \
+  --set appSettings.pystol.ui.host='labserver' \
+  --set appSettings.pystol.ui.port=3000 \
+  ./helm/ \
+  -f helm/templates/values.yaml \
+  -x templates/operator.yaml \
+  | kubectl apply -f -
+
+kubectl apply -f ./helm/templates/crd.yaml
 ```
 **Windows**
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/rbac.yaml
 
 # Download the operator.yaml file and make the changes manually
 # until the replacement command for Windows is published.
 # If you run operator.yaml without updating the image localtion, you will deploy
 # whatever is in latest and you will not be able to see your changes.
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/operator.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/operator.yaml
 
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/templates/crd.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/crd.yaml
 ```
 
 The execution of the previous 3 commands should not return any error.
