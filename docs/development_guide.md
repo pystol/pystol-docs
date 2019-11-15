@@ -209,8 +209,8 @@ kubectl apply -f ./helm/templates/rbac.yaml
 helm template \
   --set appSettings.pystol.controller.image=localhost:5000/operator:latest \
   --set appSettings.pystol.ui.image=localhost:5000/operator:latest \
-  --set appSettings.pystol.ui.host='labserver' \
-  --set appSettings.pystol.ui.port=3000 \
+  --set appSettings.pystol.ui.api_host='labserver' \
+  --set appSettings.pystol.ui.api_port=3000 \
   ./helm/ \
   -f helm/templates/values.yaml \
   -x templates/operator.yaml \
