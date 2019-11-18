@@ -251,6 +251,31 @@ and create new ones, you will need to recreate the forwarding rules.
 * If you updated a previously created deployment, you will need to kill the current pods, so
 the controller can recreate them.
 
+
+## Local development of the Web UI
+
+There is a basic set of mocked data to launch the Web UI
+directly from a local environment.
+To be able to see it, we will need to launch the webpack
+dev server which by default will launch the mocked data.
+
+This is particularly useful to decouple the Kubernetes
+platform from the web development
+and allow a simpler workflow for pushing improvements
+and fixed to the web UI.
+
+Run the following commands:
+
+```bash
+git clone git@github.com:pystol/pystol.git
+cd pystol/pystol-ui/
+npm install
+npm run dev
+```
+
+The webpack command should automatycally open the URL to see the Web UI,
+by deafult in localhost:8080.
+
 ## Repository structure
 
 This is the current repository structure:

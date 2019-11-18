@@ -40,12 +40,32 @@ repository.
 We will fetch and apply directly the templates from GitHub.
 The next step is to connect to the terminal where you have access
 to your containers platform deployed, either with bash of Powershell
-and execute.
+and execute from the root of the repository.
+
+**Windows**
+
+This helm template command should render all the templates inside the helm
+folder.
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/rbac.yaml
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/operator.yaml
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/crd.yaml
+helm template ./helm/ -f helm/templates/values.yaml | Out-File -Encoding UTF8 -FilePath ./temp.yaml
+kubectl apply -f ./temp.yaml --validate=false
+Remove-Item -Path ./temp.yaml
+```
+
+**Linux**
+
+```bash
+kubectl apply -f ./helm/templates/rbac.yaml
+
+helm template \
+  ./helm/ \
+  -f helm/templates/values.yaml \
+  -x templates/operator.yaml \
+  | kubectl apply -f -
+
+kubectl apply -f ./helm/templates/crd.yaml
+
 ```
 
 All the previous commands should end correctly and without any errors.
@@ -64,7 +84,7 @@ your development machine points the following host `labserver` as
 the place you have your MiniKube/MiniShift deployed**
 
 For example: If you have it locally, point the hostname `labserver` to `127.0.0.1` if
-it's another host, change the IP accordingly.
+it's another host, change the IP accordingly. By default should be called localhost
 
 **Linux**
 
@@ -108,7 +128,7 @@ It might be faster if you just parse the output of the get pods output and inser
 
 **Linux**
 ```bash
-kubectl port-forward --address 0.0.0.0 `kubectl get pods | grep pystol-ui | head -n1 | cut -d' ' -f1` 3000:3000
+kubectl port-forward --address 0.0.0.0 `kubectl get pods | grep pystol-ui | grep Running | head -n1 | cut -d' ' -f1` 3000:3000
 ```
 
 **Windows**
@@ -132,7 +152,7 @@ docker run -ti pystol/operator pystol
 **Linux**
 
 ```bash
-kubectl exec -it `kubectl get pods | grep pystol-controller | head -n1 | cut -d' ' -f1` /bin/bash
+kubectl exec -it `kubectl get pods | grep pystol-controller | grep Running | head -n1 | cut -d' ' -f1` /bin/bash
 ```
 
 **Windows**

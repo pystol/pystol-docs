@@ -54,8 +54,11 @@ choco install git.install --params "/GitAndUnixToolsOnPath /NoAutoCrlf" -y
 # Install VirtualBox
 choco install virtualbox -y
 
-#Install MiniKube
+# Install MiniKube
 choco install minikube -y
+
+# Install helm
+choco install kubernetes-helm -y
 
 # Install the Kubernetes client
 choco install kubernetes-cli -y
