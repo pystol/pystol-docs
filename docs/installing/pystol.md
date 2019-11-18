@@ -48,7 +48,10 @@ This helm template command should render all the templates inside the helm
 folder.
 
 ```bash
-helm template ./helm/ -f helm/templates/values.yaml | Out-File -Encoding UTF8 -FilePath ./temp.yaml
+helm template `
+    ./helm/ `
+    -f helm/templates/values.yaml `
+    | Out-File -Encoding UTF8 -FilePath ./temp.yaml
 kubectl apply -f ./temp.yaml --validate=false
 Remove-Item -Path ./temp.yaml
 ```

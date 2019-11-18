@@ -218,21 +218,24 @@ helm template \
 
 kubectl apply -f ./helm/templates/crd.yaml
 ```
+
 **Windows**
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/rbac.yaml
+helm template `
+    --set appSettings.pystol.controller.image=localhost:5000/operator:latest `
+    --set appSettings.pystol.ui.image=localhost:5000/operator:latest `
+    --set appSettings.pystol.ui.api_host='labserver' `
+    --set appSettings.pystol.ui.api_port=3000 `
+    ./helm/ `
+    -f helm/templates/values.yaml `
+    | Out-File -Encoding UTF8 -FilePath ./temp.yaml
 
-# Download the operator.yaml file and make the changes manually
-# until the replacement command for Windows is published.
-# If you run operator.yaml without updating the image localtion, you will deploy
-# whatever is in latest and you will not be able to see your changes.
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/operator.yaml
-
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/crd.yaml
+kubectl apply -f ./temp.yaml --validate=false
+Remove-Item -Path ./temp.yaml
 ```
 
-The execution of the previous 3 commands should not return any error.
+The execution of the previous commands should not return any error.
 
 ---
 
