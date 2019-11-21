@@ -3,7 +3,7 @@ layout: default
 title: Kubernetes
 parent: Installing
 nav_order: 1
-permalink: /installing/kubernetes
+permalink: /docs/installing/kubernetes
 ---
 
 # Installing Kubernetes

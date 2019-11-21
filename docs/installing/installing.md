@@ -3,7 +3,7 @@ layout: default
 title: Installing
 nav_order: 3
 has_children: true
-permalink: /installing
+permalink: /docs/installing
 ---
 
 # Installing

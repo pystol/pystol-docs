@@ -3,7 +3,7 @@ layout: default
 title: Example architectures
 nav_order: 6
 has_children: true
-permalink: /example-architectures
+permalink: /docs/example-architectures
 ---
 
 # Example architectures

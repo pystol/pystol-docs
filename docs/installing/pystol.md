@@ -3,7 +3,7 @@ layout: default
 title: Pystol
 parent: Installing
 nav_order: 2
-permalink: /installing/pystol
+permalink: /docs/installing/pystol
 ---
 
 # Installing Pystol

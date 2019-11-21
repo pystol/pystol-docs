@@ -2,7 +2,7 @@
 layout: default
 title: Contributing
 nav_order: 8
-permalink: /contributing
+permalink: /docs/contributing
 ---
 
 # Contributing to Pystol

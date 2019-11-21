@@ -3,7 +3,7 @@ layout: default
 title: Apache spark
 parent: Example architectures
 nav_order: 1
-permalink: /example-architectures/apache-spark
+permalink: /docs/example-architectures/apache-spark
 ---
 
 # Apache Spark

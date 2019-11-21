@@ -2,7 +2,7 @@
 layout: default
 title: Usage
 nav_order: 5
-permalink: /usage
+permalink: /docs/usage
 ---
 
 # Usage

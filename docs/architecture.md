@@ -2,7 +2,7 @@
 layout: default
 title: Architecture
 nav_order: 2
-permalink: /architecture
+permalink: /docs/architecture
 ---
 
 # Architecture

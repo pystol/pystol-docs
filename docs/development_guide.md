@@ -2,7 +2,7 @@
 layout: default
 title: Development guide
 nav_order: 4
-permalink: /development-guide
+permalink: /docs/development-guide
 ---
 
 # Development guide
@@ -164,7 +164,7 @@ docker push localhost:5000/operator
 If you noticed, inside the template for the operator deployment
 `https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml#L17..L19`
 
-```
+```bash
 containers:
 - name: pystol-ui
   image: {{ .Values.appSettings.pystol.ui.image }}
@@ -172,7 +172,7 @@ containers:
 
 and `https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml#L49..51`
 
-```
+```bash
 containers:
 - name: pystol-controller
   image: {{ .Values.appSettings.pystol.controller.image }}
@@ -276,84 +276,5 @@ npm install
 npm run dev
 ```
 
-The webpack command should automatycally open the URL to see the Web UI,
-by deafult in localhost:8080.
-
-## Repository structure
-
-This is the current repository structure:
-
-```
-.
-├── Dockerfile
-├── LICENSE
-├── pystol-operator
-│   ├── pystol
-│   │   ├── cli.py
-│   │   ├── const.py
-│   │   ├── __init__.py
-│   │   ├── load_crd.py
-│   │   └── operator.py
-│   ├── requirements.txt
-│   ├── setup.py
-│   └── tests
-│       └── test_sample.py
-├── pystol-ui
-│   ├── package.json
-│   ├── src
-│   │   ├── assets
-│   │   │   └── images
-│   │   │       ├── GitHub-Mark-120px-plus.png
-│   │   │       └── icon-basic-set_59-cube-512.png
-│   │   ├── client
-│   │   │   ├── actions
-│   │   │   │   └── graphing.js
-│   │   │   ├── app.js
-│   │   │   ├── components
-│   │   │   │   ├── directions.js
-│   │   │   │   ├── leftPanel.js
-│   │   │   │   ├── legend.js
-│   │   │   │   ├── monitoring.js
-│   │   │   │   └── table.js
-│   │   │   ├── images
-│   │   │   │   ├── favicon.ico
-│   │   │   │   ├── _ionicons_svg_logo-codepen2.svg
-│   │   │   │   ├── _ionicons_svg_logo-codepen.svg
-│   │   │   │   ├── _ionicons_svg_md-aperture2.svg
-│   │   │   │   ├── _ionicons_svg_md-aperture.svg
-│   │   │   │   ├── _ionicons_svg_md-crop2.svg
-│   │   │   │   ├── _ionicons_svg_md-wifi2.svg
-│   │   │   │   ├── _ionicons_svg_md-wifi.svg
-│   │   │   │   ├── k8slogo.png
-│   │   │   │   └── pystol-logo.png
-│   │   │   ├── reducers
-│   │   │   │   ├── graphing.js
-│   │   │   │   └── store.js
-│   │   │   ├── styles
-│   │   │   │   ├── drawerStyles.js
-│   │   │   │   └── styles.scss
-│   │   │   ├── supplement
-│   │   │   │   ├── fetch.js
-│   │   │   │   └── graphOptions.js
-│   │   │   └── testing
-│   │   │       ├── app.test.js
-│   │   │       ├── enzyme.js
-│   │   │       └── __snapshots__
-│   │   │           └── app.test.js.snap
-│   │   ├── index.html
-│   │   ├── index.js
-│   │   └── server
-│   │       ├── express-app.js
-│   │       ├── server.js
-│   │       └── testing
-│   │           └── server.test.js
-│   └── webpack.config.js
-├── README.md
-└── templates
-    ├── crd.yaml
-    ├── development_environment
-    │   ├── kube-registry.yaml
-    │   └── operator.yaml
-    ├── operator.yaml
-    └── rbac.yaml
-```
+The webpack command should automatically open the URL to see the Web UI,
+by default in localhost:8080.

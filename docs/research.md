@@ -2,7 +2,7 @@
 layout: default
 title: Research
 nav_order: 7
-permalink: /research
+permalink: /docs/research
 ---
 
 # Research

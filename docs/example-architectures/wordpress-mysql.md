@@ -3,7 +3,7 @@ layout: default
 title: Wordpress and MySQL
 parent: Example architectures
 nav_order: 2
-permalink: /example-architectures/wordpress-mysql
+permalink: /docs/example-architectures/wordpress-mysql
 ---
 
 # Wordpress and MySQL
