@@ -18,6 +18,7 @@ in a single-node Kubernetes cluster.
 1. TOC
 {:toc}
 
+
 ## Pre-requirements
 
 The MiniKube/MiniShift VM requires approximately 4GB
@@ -27,72 +28,198 @@ that run on Linux, macOS, and Windows.
 
 ---
 
-## Installing Minikube on Windows with VirtualBox
+## Installing Minikube in CentOS
 
-Here we have simple Powershell script to have installed
-MiniKube on a Windows/VirtualBox machine.
+The following steps need to run in the Hypervisor machine
+in which you will like to have your Minikube deployment.
 
-**For the Windows installation use the
-Windows PowerShell Integrated Scripting Environment (ISE)**
-This is a  is a GUI-based application to assist with writing
-and debugging PowerShell scripts. System administrators,
-developers and other IT professionals can use PowerShell ISE
-to run commands from the application instead of the PowerShell console.
+### Prepare the hypervisor node
 
-```powershell
-<#  
-.SYNOPSIS  
-    Install MiniKube in Windows with VirtualBox
+Now, let's install some dependencies.
+Same Hypervisor node, same `root` user.
 
-Set-ExecutionPolicy Unrestricted
+```bash
+# In this dev. env. /var is only 50GB, so I will create
+# a sym link to another location with more capacity.
+sudo mkdir -p /home/libvirt/
+sudo ln -sf /home/libvirt/ /var/lib/libvirt
 
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+sudo mkdir -p /home/docker/
+sudo ln -sf /home/docker/ /var/lib/docker
 
-# Install Git
-choco install git.install --params "/GitAndUnixToolsOnPath /NoAutoCrlf" -y
+# Install some packages
+sudo yum install dnf -y
+sudo dnf update -y
+sudo dnf groupinstall "Virtualization Host" -y
+sudo dnf install libvirt qemu-kvm virt-install virt-top libguestfs-tools bridge-utils -y
+sudo dnf install git lvm2 lvm2-devel -y
+sudo dnf install libvirt-python python-lxml libvirt curl-y
+sudo dnf install binutils qt gcc make patch libgomp -y
+sudo dnf install glibc-headers glibc-devel kernel-headers -y
+sudo dnf install kernel-devel dkms bash-completion -y
+sudo dnf install nano wget -y
+sudo dnf install python3-pip -y
+```
 
-# Install VirtualBox
-choco install virtualbox -y
+### Check that the kernel modules are OK.
 
-# Install MiniKube
-choco install minikube -y
+```bash
+# Check the kernel modules are OK
+sudo lsmod | grep kvm
+```
 
-# Install helm
-choco install kubernetes-helm -y
+### Enable libvirtd, disable SElinux xD and firewalld.
 
-# Install the Kubernetes client
-choco install kubernetes-cli -y
+```bash
+# Enable libvirtd
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
 
-# Install Docker
-choco install docker-cli -y
+# Disable selinux & stop firewall as needed.
+setenforce 0
+perl -pi -e 's/SELINUX\=enforcing/SELINUX\=disabled/g' /etc/selinux/config
+systemctl stop firewalld
+systemctl disable firewalld
+```
 
-# Install Docker machine
-choco install docker-machine -y
+### Install Minikube.
 
-# Configure MiniKube to use VirtualBox
-minikube config set vm-driver virtualbox
-minikube config set memory 2048
-minikube config set disk-size 10000MB
+```bash
+#Install minikube
+/usr/bin/curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube
+cp -p minikube /usr/local/bin && rm -f minikube
 
-# Start MiniKube
-minikube start
+# Create the repo for kubernetes
+cat << EOF > /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+EOF
+
+# Install kubectl
+sudo dnf install kubectl -y
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
+
+### Create the toor user (from the Hypervisor node, as root).
+
+```bash
+sudo useradd toor
+echo "toor:toor" | sudo chpasswd
+echo "toor ALL=(root) NOPASSWD:ALL" \
+  | sudo tee /etc/sudoers.d/toor
+sudo chmod 0440 /etc/sudoers.d/toor
+sudo su - toor
+
+cd
+mkdir .ssh
+ssh-keygen -t rsa -N "" -f .ssh/id_rsa
+```
+
+Now, follow as the `toor` user and prepare the Hypervisor node
+for Minikube.
+
+### Install Docker.
+
+**Note:** We might not be able to install Docker in CentOS 8,
+in this case we should go for a Podman/Buildah approach.
+This needs to be tested.
+
+We will like to use docker in the Hypervisor node
+for creating images and debugging purposes.
+
+```bash
+# Install docker
+sudo dnf install docker -y
+sudo usermod --append --groups dockerroot toor
+sudo tee /etc/docker/daemon.json >/dev/null <<-EOF
+{
+    "live-restore": true,
+    "group": "dockerroot"
+}
+EOF
+sudo systemctl start docker
+sudo systemctl enable docker
+
+```
+
+### Finish the Minikube configuration.
+
+```bash
+# Add to bashrc in toor user
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+
+# We add toor to the libvirtd group
+sudo usermod --append --groups libvirt toor
+```
+
+### Start Minikube.
+
+```bash
+minikube start --memory=65536 --cpus=4 --vm-driver kvm2
+export no_proxy=$no_proxy,$(minikube ip)
+nohup kubectl proxy --address='0.0.0.0' --port=8001 --disable-filter=true &
+sleep 30
 minikube addons enable dashboard
-minikube status
+nohup minikube dashboard &
+minikube addons open dashboard
+```
 
-# To start the dashboard run
-# minikube dashboard
+The Minikube instance should be reachable from the following URL:
+
+http://machine_ip:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+
+```bash
+# To stop/delete
+kubectl delete deploy,svc --all
+minikube stop
+minikube delete
 ```
 
 ---
 
-## Installing Minikube on CentOS 7 with KVM
+## Minikube cheat sheet.
 
-Please refer to [this blog post](https://www.anstack.com/blog/2019/10/13/oil-painting-and-installing-minikube-in-centos-7.html) for further details.
+```bash
+# set & get current context of cluster
+ kubectl config use-context minikube
+ kubectl config current-context
+
+# fetch all the kubernetes objects for a namespace
+ kubectl get all -n kube-system
+
+# display cluster details
+ kubectl cluster-info
+
+# set custom memory and cpu
+ minikube config set memory 4096
+ minikube config set cpus 2
+
+# fetch cluster ip
+ minikube ip
+
+# ssh to the minikube vm
+ minikube ssh
+
+# display addons list and status
+ minikube addons list
+
+# exposes service to vm & retrieves url
+ minikube service elasticsearch
+ minikube service elasticsearch --url
+```
 
 ---
 
 ## Result
 
-You should have your containers platform deployed successfully and ready to start your development and tests.
+In any case you should have your containers platform deployed
+successfully and ready to start your development and tests.
 
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/installing_minikube.PNG)

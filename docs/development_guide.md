@@ -57,17 +57,9 @@ kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/tem
 
 Now, we need to forward the 5000 port.
 
-**Linux**
-
 ```bash
 kubectl port-forward --namespace kube-system \
 $(kubectl get po -n kube-system | grep kube-registry-v0 | \awk '{print $1;}') 5000:5000
-```
-
-**Windows**
-
-```bash
-kubectl port-forward --namespace kube-system ((kubectl get po -n kube-system | Select-String 'kube-registry-v0').ToString().Split(' ')[0]) 5000:5000
 ```
 
 ---
@@ -107,45 +99,6 @@ Now, the next step is to build a new container image to see our changes refreshe
 ---
 
 ## Building and pushing the container image
-
-Run `minikube docker-env` to show your local Docker environment variables.
-
-**Windows**
-
-The next steps assume you have the system installed correctly.
-
-```bash
-docker-machine create --virtualbox-disk-size "2000" --driver virtualbox devenv
-```
-
-Now, we can list the VMs created.
-
-```bash
-docker-machine ls
-# NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER     ERRORS
-# devenv    -        virtualbox   Running   tcp://192.168.99.102:2376           v19.03.4   
-```
-
-Let's link the docker-machine VM with our terminal.
-
-```bash
-docker-machine env --shell powershell devenv | iex
-& minikube docker-env | Invoke-Expression
-```
-
-Now you should be able to have the docker CLI available.
-
-From the root of the Pystol repository execute:
-
-```bash
-# Build the image
-docker build -t localhost:5000/operator .
-
-# Push the changes to the local registry with the 5000 port
-docker push localhost:5000/operator
-```
-
-**Linux**
 
 From the root of the Pystol repository execute:
 
@@ -197,8 +150,6 @@ Let's update the content of the file
 
 We will do this by using helm template to replace the values with a custom one.
 
-**Linux**
-
 ```bash
 kubectl apply -f ./helm/templates/rbac.yaml
 
@@ -217,22 +168,6 @@ helm template \
   | kubectl apply -f -
 
 kubectl apply -f ./helm/templates/crd.yaml
-```
-
-**Windows**
-
-```bash
-helm template `
-    --set appSettings.pystol.controller.image=localhost:5000/operator:latest `
-    --set appSettings.pystol.ui.image=localhost:5000/operator:latest `
-    --set appSettings.pystol.ui.api_host='labserver' `
-    --set appSettings.pystol.ui.api_port=3000 `
-    ./helm/ `
-    -f helm/templates/values.yaml `
-    | Out-File -Encoding UTF8 -FilePath ./temp.yaml
-
-kubectl apply -f ./temp.yaml --validate=false
-Remove-Item -Path ./temp.yaml
 ```
 
 The execution of the previous commands should not return any error.
@@ -267,14 +202,105 @@ platform from the web development
 and allow a simpler workflow for pushing improvements
 and fixed to the web UI.
 
-Run the following commands:
+Make sure you have installed NodeJS:
+
+```
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
+sudo yum install nodejs -y
+node --version
+```
+
+Run the following commands to start a server with the web UI:
 
 ```bash
 git clone git@github.com:pystol/pystol.git
 cd pystol/pystol-ui/
-npm install
-npm run dev
+npm install react-scripts
+npm install # Install the main dependencies, like the express for the custom API endpoints
+npm install pystol-wui # Install the web UI dependencies.
+npm run-script build # We build the Web UI.
 ```
 
-The webpack command should automatically open the URL to see the Web UI,
-by default in localhost:8080.
+If you are executing minikube and you want to develop the UI using the
+APIs data from the K8s deployment, just execute.
+
+```bash
+npm start
+```
+
+If you want to use the mocked data **No need for minikube at all** then execute:
+
+```bash
+npm run-script dev # Start the web server passing some env variable, to start the mock data.
+```
+
+The webpack command should point to the URL to see the Web UI,
+by default in the port 3001.
+The API endpoints
+
+## Local development of the CLI and the Python operator
+
+To do so, you will need a fully functional Kubernetes deployment.
+This is because both the operator watching for CRs and the
+CLI needs to connect to the K8s master node to work.
+
+Assuming you have a Minikube environment working, i.e. following the
+[Kubernetes install guide](https://www.pystol.org/docs/installing/kubernetes#installing-minikube-in-centos)
+available in the docs, install the Pystol operator in the host machine having
+access to the kubectl.
+
+This is possible because we already have a privileged service account,
+we have list permissions on pods in any namespace
+and the token that is used for authenticating to the API server
+is available by default with the Minikube install.
+
+We need Python3 and Python3-pip to continue.
+
+Assuming you have them already execute:
+
+```bash
+git clone git@github.com:pystol/pystol.git
+cd pystol/pystol-ui/
+sudo pip3 install -r ./pystol-operator/requirements.txt
+sudo pip3 install --upgrade ./pystol-operator
+```
+
+If you followed the Minikube install from Pystol docs
+you will find that the **/home/toor/.kube/config** is
+present.
+There it is all the information related to make the bindings
+between the Pystol CLI and the Minikube deployment.
+
+Note: When Pystol run from a container the
+**load_incluster_config** method will automatically load
+the cluster config.
+
+Now we need to be sure we can load the cluster configuration
+
+```bash
+kubectl config get-contexts
+# kubectl config use-context minikube
+```
+
+Run the following command to export the path for
+the config file:
+
+```bash
+export KUBECONFIG=/home/toor/.kube/config
+```
+
+Now, you should be able to run the
+Pystol CLI like:
+
+```bash
+pystol -v # Prints the version
+pystol -b # Prints the banner
+pystol -h # Prints the help menu
+```
+
+Each time you make changes you will
+need to reinstall the Python client.
+
+## Local development of the Ansible collection with the Pystol actions
+
+...CoMiNg SoOn...

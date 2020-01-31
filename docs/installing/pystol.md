@@ -33,30 +33,21 @@ the latest version available in master.
 We will call the templates directly from the GitHub
 repository.
 
+Clone the main Repository.
+
+```
+git clone git@github.com:pystol/pystol.git
+cd pystol
+```
+
 ---
 
 ## Deploying Pystol
 
 We will fetch and apply directly the templates from GitHub.
 The next step is to connect to the terminal where you have access
-to your containers platform deployed, either with bash of Powershell
-and execute from the root of the repository.
-
-**Windows**
-
-This helm template command should render all the templates inside the helm
-folder.
-
-```bash
-helm template `
-    ./helm/ `
-    -f helm/templates/values.yaml `
-    | Out-File -Encoding UTF8 -FilePath ./temp.yaml
-kubectl apply -f ./temp.yaml --validate=false
-Remove-Item -Path ./temp.yaml
-```
-
-**Linux**
+to your containers platform deployed, and execute from the
+root of the repository.
 
 ```bash
 kubectl apply -f ./helm/templates/rbac.yaml
@@ -89,16 +80,8 @@ the place you have your MiniKube/MiniShift deployed**
 For example: If you have it locally, point the hostname `labserver` to `127.0.0.1` if
 it's another host, change the IP accordingly. By default should be called localhost
 
-**Linux**
-
 ```
 echo '127.0.0.1 labserver' | sudo tee -a /etc/hosts
-```
-
-**Windows**
-
-```
-Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "127.0.0.1`tlabserver" -Force
 ```
 
 By default you should be able to see the application deployed in MiniKube/MiniShift correctly.
@@ -129,14 +112,8 @@ command you should be able to get access to the following screen located at `htt
 
 It might be faster if you just parse the output of the get pods output and insert it directly in the port-forward command.
 
-**Linux**
 ```bash
 kubectl port-forward --address 0.0.0.0 `kubectl get pods | grep pystol-ui | grep Running | head -n1 | cut -d' ' -f1` 3000:3000
-```
-
-**Windows**
-```bash
-kubectl port-forward --address 0.0.0.0 ((kubectl get pods | Select-String 'pystol-ui').ToString().Split(' ')[0]) 3000:3000
 ```
 
 ---
@@ -152,15 +129,8 @@ docker run -ti pystol/operator pystol
 
 * To get access to the pods and execute the Pystol CLI:
 
-**Linux**
-
 ```bash
 kubectl exec -it `kubectl get pods | grep pystol-controller | grep Running | head -n1 | cut -d' ' -f1` /bin/bash
-```
-
-**Windows**
-```bash
-  kubectl exec -it ((kubectl get pods | Select-String 'pystol-controller').ToString().Split(' ')[0]) /bin/bash
 ```
 
 * To push and update docker hub:
