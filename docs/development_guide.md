@@ -301,6 +301,32 @@ pystol -h # Prints the help menu
 Each time you make changes you will
 need to reinstall the Python client.
 
+### Adding a CR for Testing
+
+```bash
+NEW_UUID=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 5 | head -n 1)
+cat <<EOF > pystolCr.yml
+apiVersion: pystol.org/v1alpha1
+kind: PystolAction
+metadata:
+  name: pystol-action-pingtest-$NEW_UUID # A slug to identify the action to be executed.
+spec:
+  namespace: pystol # The Ansible Galaxy namespace
+  collection: actions # The action collection inside the Galaxy namespace
+  role: pingtest # The Pystol action to be executed inside the collection 'a role'
+  result: "{}"
+  executed: false
+
+# If your Ansible collections have the same
+# structure you can run and deploy your custom
+# Pystol actions directly.
+# Which will be basically execute a role in the K8s deployment.
+EOF
+
+kubectl apply -f pystolCr.yml
+kubectl get PystolActions
+```
+
 ## Local development of the Ansible collection with the Pystol actions
 
 ...CoMiNg SoOn...

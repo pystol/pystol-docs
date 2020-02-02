@@ -35,7 +35,7 @@ repository.
 
 Clone the main Repository.
 
-```
+```bash
 git clone git@github.com:pystol/pystol.git
 cd pystol
 ```
