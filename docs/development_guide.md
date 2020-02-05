@@ -321,7 +321,7 @@ spec:
   role: pingtest # The Pystol action to be executed inside the collection 'a role'
   source: galaxy.ansible.com
   # Replace the source with:
-  #source: git+http://github.com/pystol/pystol-galaxy.git
+  #source: https://github.com/pystol/pystol-galaxy
   #
   # From GitHub
   #namespace: newswangerd
@@ -411,6 +411,10 @@ ansible-galaxy install --force -r requirements.yml
 ```
 
 To finish executing the **pingtest** role installed from the previously defined source.
+
+## Open the Pods -> The executed pod -> Go bellow to the arguments section
+
+If you copy/paste the command in a node we will execute the same. For debugging purposes
 
 ## Listing Pystol actions and retrieving execution results
 
