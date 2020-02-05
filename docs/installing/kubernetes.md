@@ -28,7 +28,7 @@ that run on Linux, macOS, and Windows.
 
 ---
 
-## Installing Minikube in CentOS
+## Installing Minikube in CentOS 8
 
 The following steps need to run in the Hypervisor machine
 in which you will like to have your Minikube deployment.
@@ -126,26 +126,11 @@ for Minikube.
 
 ### Install Docker.
 
-**Note:** We might not be able to install Docker in CentOS 8,
-in this case we should go for a Podman/Buildah approach.
-This needs to be tested.
-
-We will like to use docker in the Hypervisor node
-for creating images and debugging purposes.
+**Note:** There is no Docker in Centos 8
+we will use Podman.
 
 ```bash
-# Install docker
-sudo dnf install docker -y
-sudo usermod --append --groups dockerroot toor
-sudo tee /etc/docker/daemon.json >/dev/null <<-EOF
-{
-    "live-restore": true,
-    "group": "dockerroot"
-}
-EOF
-sudo systemctl start docker
-sudo systemctl enable docker
-
+sudo dnf install podman podman-docker -y
 ```
 
 ### Finish the Minikube configuration.
@@ -162,12 +147,12 @@ sudo usermod --append --groups libvirt toor
 ### Start Minikube.
 
 ```bash
-minikube start --memory=65536 --cpus=4 --vm-driver kvm2
+minikube start --disk-size=300GB --memory=65536 --cpus=4 --vm-driver kvm2
 export no_proxy=$no_proxy,$(minikube ip)
 nohup kubectl proxy --address='0.0.0.0' --port=8001 --disable-filter=true &
 sleep 30
 minikube addons enable dashboard
-nohup minikube dashboard &
+nohup minikube dashboard --url &
 minikube addons open dashboard
 ```
 

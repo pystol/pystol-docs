@@ -72,6 +72,8 @@ create the image, push it, and deploy it to MiniKube/MiniShift.
 Clone the main Repository.
 
 ```
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install --upgrade setuptools
 git clone git@github.com:pystol/pystol.git
 cd pystol
 ```
@@ -104,10 +106,10 @@ From the root of the Pystol repository execute:
 
 ```bash
 # Build the image
-docker build -t localhost:5000/operator .
+sudo podman build -t localhost:5000/operator .
 
 # Push the changes to the local registry with the 5000 port
-docker push localhost:5000/operator
+sudo podman push localhost:5000/operator --tls-verify=false
 ```
 
 ---
@@ -303,6 +305,8 @@ need to reinstall the Python client.
 
 ### Adding a CR for Testing
 
+If you want to skip the CLI yo can inject the objects directly with:
+
 ```bash
 NEW_UUID=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 5 | head -n 1)
 cat <<EOF > pystolCr.yml
@@ -311,9 +315,20 @@ kind: PystolAction
 metadata:
   name: pystol-action-pingtest-$NEW_UUID # A slug to identify the action to be executed.
 spec:
+  # From Galaxy
   namespace: pystol # The Ansible Galaxy namespace
   collection: actions # The action collection inside the Galaxy namespace
   role: pingtest # The Pystol action to be executed inside the collection 'a role'
+  source: galaxy.ansible.com
+  # Replace the source with:
+  #source: git+http://github.com/pystol/pystol-galaxy.git
+  #
+  # From GitHub
+  #namespace: newswangerd
+  #collection: collection_demo
+  #role: deltoid
+  #source: https://github.com/newswangerd/collection_demo
+  extra-vars: '{"pacman":"mrs","ghosts":["inky","pinky","clyde","sue"]}'
   result: "{}"
   executed: false
 
@@ -325,8 +340,98 @@ EOF
 
 kubectl apply -f pystolCr.yml
 kubectl get PystolActions
+# Take the CR ID and use it bellow...
+kubectl patch pystolactions <pystol-action-pingtest-0tmaa> --type='json' -p='[{"op": "replace", "path": "/spec/state", "value":"new image"}]'
 ```
+
+The previous yml file should be the equivalent to run:
+
+```bash
+pystol run-action --namespace pystol --collection actions --role pingtest
+```
+
+The flexibility of this approach allows us to enable users to
+develop their custom Pystol actions so they can execute the like:
+
+```bash
+pystol run-action --namespace johndoe --collection tests --role my_custom_pystol_role
+```
+
+In this particular case it means that there is an user in Ansible Galaxy as
+https://galaxy.ansible.com/johndoe/tests and we will execute the
+my_custom_pystol_role role directly in the cluster.
 
 ## Local development of the Ansible collection with the Pystol actions
 
-...CoMiNg SoOn...
+If you need to test your Galaxy collections before they are available
+in the [Galaxy Hub](https://galaxy.ansible.com/home) or if you need to
+have them locally available, i.e. in a local GIT repository.
+
+We need to install the collection and then specify the role we will like to
+execute.
+
+```bash
+pystol run --namespace pystol \
+           --collection actions \
+           --role pingtest \
+           --source https://github.com/pystol/pystol-galaxy.git
+```
+
+Which internally will create the following requirements file.
+
+```bash
+cat <<EOF > requirements.yml
+---
+collections:
+- name: pystol.actions
+  source: git+http://github.com/pystol/pystol-galaxy.git
+EOF
+```
+
+Also you can execute them locally like this,
+you clone the repository with your roles which
+will defined the Pystol actions, then go
+to the roles folder and list the roles you have
+available, in this case "pingtest", so run it like:
+
+```bash
+#[toor@nyctea]$ pwd
+#/home/toor/pystol-galaxy/actions/roles
+#[toor@nyctea]$ ls
+#pingtest
+
+ansible -m include_role -a 'name=pingtest' -e 'ansible_python_interpreter=/usr/bin/python3' localhost -vvvv
+```
+And you can locally test each role.
+
+And then the Kubernetes job will execute:
+
+```bash
+ansible-galaxy install --force -r requirements.yml
+```
+
+To finish executing the **pingtest** role installed from the previously defined source.
+
+## Listing Pystol actions and retrieving execution results
+
+The following command will table list all the executed Pystol actions
+
+```bash
+pystol list-actions
+```
+
+The following command will display the particular results of a Pystol action execution.
+
+```bash
+pystol show-action <action_name>
+```
+
+## Cleaning Pystol actions
+
+```bash
+pystol purge-action [<action_name>|--all]
+```
+
+This will remove the selected Pystol action CR
+and the associated job wit its results.
+**Note: This action can no be undone.*
