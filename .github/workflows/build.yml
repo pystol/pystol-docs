@@ -1,6 +1,6 @@
 on: [push]
 
-name: jekyll-docs
+name: build
 
 jobs:
 
