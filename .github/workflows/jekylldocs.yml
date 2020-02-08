@@ -1,6 +1,6 @@
 on: [push]
 
-name: jekyll-docs-build
+name: jekyll-docs
 
 jobs:
 
@@ -16,12 +16,12 @@ jobs:
         docker run --rm \
         --volume="${{ github.workspace }}:/srv/jekyll" \
         jekyll/builder:3.8.5 /bin/bash -c "chmod 777 /srv/jekyll && jekyll build"
-        
+
   css:
     name: Stylelint
     runs-on: ubuntu-latest
     steps:
-    
+
     - uses: actions/checkout@master
 
     - name: Use Node.js 10.x
