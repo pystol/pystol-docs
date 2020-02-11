@@ -115,7 +115,13 @@ sudo podman push localhost:5000/operator --tls-verify=false
 # buildah bud -t localhost:5000/operator .
 ```
 
----
+
+## Cleaning
+
+```bash
+kubectl get pods --all-namespaces --no-headers=true | awk '/pystol/{print $2}' | xargs  kubectl delete pod
+kubectl get jobs --all-namespaces --no-headers=true | awk '/pystol/{print $2}' | xargs  kubectl delete job
+```
 
 ## Deploy Pystol from the local registry
 
@@ -332,10 +338,11 @@ spec:
   #collection: collection_demo
   #role: deltoid
   #source: https://github.com/newswangerd/collection_demo
-  extra-vars: '{"pacman":"mrs","ghosts":["inky","pinky","clyde","sue"]}'
-  action-status: CRE
-  workflow-status: WFA
-  action-output: {}
+  extra_vars: '{"pacman":"mrs","ghosts":["inky","pinky","clyde","sue"]}'
+  action_state: CRE
+  workflow_state: WFA
+  action_stdout: {}
+  action_stderr: {}
 
 # If your Ansible collections have the same
 # structure you can run and deploy your custom
@@ -354,7 +361,8 @@ The previous yml file should be the equivalent to run:
 ```bash
 pystol run --namespace pystol \
            --collection actions \
-           --role pingtest
+           --role pingtest \
+           --source https://github.com/pystol/pystol-galaxy
 ```
 
 The flexibility of this approach allows us to enable users to
