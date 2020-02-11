@@ -110,6 +110,9 @@ sudo podman build -t localhost:5000/operator .
 
 # Push the changes to the local registry with the 5000 port
 sudo podman push localhost:5000/operator --tls-verify=false
+
+# buildah bud -t my-image-name:$(date +%s) .
+# buildah bud -t localhost:5000/operator .
 ```
 
 ---
@@ -234,6 +237,7 @@ If you want to use the mocked data **No need for minikube at all** then execute:
 
 ```bash
 npm run-script dev # Start the web server passing some env variable, to start the mock data.
+# npm run-script k8s-server # Start the web server passing some env variable, to start the mock data.
 ```
 
 The webpack command should point to the URL to see the Web UI,
@@ -329,8 +333,9 @@ spec:
   #role: deltoid
   #source: https://github.com/newswangerd/collection_demo
   extra-vars: '{"pacman":"mrs","ghosts":["inky","pinky","clyde","sue"]}'
-  result: "{}"
-  executed: false
+  action-status: CRE
+  workflow-status: WFA
+  action-output: {}
 
 # If your Ansible collections have the same
 # structure you can run and deploy your custom
@@ -347,7 +352,9 @@ kubectl patch pystolactions <pystol-action-pingtest-0tmaa> --type='json' -p='[{"
 The previous yml file should be the equivalent to run:
 
 ```bash
-pystol run-action --namespace pystol --collection actions --role pingtest
+pystol run --namespace pystol \
+           --collection actions \
+           --role pingtest
 ```
 
 The flexibility of this approach allows us to enable users to
