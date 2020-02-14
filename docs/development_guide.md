@@ -28,19 +28,7 @@ and running.
 ```
 minikube stop
 minikube delete
-minikube start
-```
-
----
-
-## Install Helm
-
-We need to install Helm in order to be able to
-render the templates.
-
-```
-curl -L https://git.io/get_helm.sh | bash
-helm init --client-only
+minikube start --disk-size=300GB --memory=65536 --cpus=4 --vm-driver kvm2
 ```
 
 ---
@@ -48,11 +36,11 @@ helm init --client-only
 ## Creating a local registry for pushing dev images
 
 Create a local registry listening in the 5000 port.
-We have a template in the `development_environment`
-folder for deploying this local registry automatically.
+We have a template for deploying this
+local registry automatically.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/helm/templates/development_environment/kube-registry.yaml
+kubectl apply -f https://raw.githubusercontent.com/pystol/pystol/master/pystol-operator/pystol/templates/kube-registry.yaml
 ```
 
 Now, we need to forward the 5000 port.
@@ -126,24 +114,24 @@ kubectl get jobs --all-namespaces --no-headers=true | awk '/pystol/{print $2}' |
 ## Deploy Pystol from the local registry
 
 If you noticed, inside the template for the operator deployment
-`https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml#L17..L19`
+`https://github.com/pystol/pystol/blob/master/pystol/pystol/master/pystol-operator/pystol/templates/ui.yaml.j2#L17..L19`
 
 ```bash
 containers:
 - name: pystol-ui
-  image: {{ .Values.appSettings.pystol.ui.image }}
+  image: {{ appSettings.pystol.ui.image }}
 ```
 
-and `https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml#L49..51`
+and `https://github.com/pystol/pystol/blob/master/pystol/pystol/master/pystol-operator/pystol/templates/controller.yaml.j2#L49..51`
 
 ```bash
 containers:
 - name: pystol-controller
-  image: {{ .Values.appSettings.pystol.controller.image }}
+  image: {{ appSettings.pystol.controller.image }}
 ```
 
-the operator is configured to fetch the image configured in the values.yaml file
-after rendering the template using `helm template`.
+the operator is configured to fetch the image configured in the upstream_values.yaml file
+after rendering the template using jinja.
 
 Now, we need to make our deployment to fetch the image with the local
 changes, so we can see the updates in the MiniKube node.
@@ -157,28 +145,31 @@ docker image ls
 ```
 
 Let's update the content of the file
-`https://github.com/pystol/pystol/blob/master/helm/templates/operator.yaml`.
+`https://github.com/pystol/pystol/blob/master/pystol/pystol/master/pystol-operator/pystol/templates/controller.yaml.j2`
+`https://github.com/pystol/pystol/blob/master/pystol/pystol/master/pystol-operator/pystol/templates/ui.yaml.j2`
 
-We will do this by using helm template to replace the values with a custom one.
+We will do this by using jinja templates to replace the values with a custom one.
 
 ```bash
-kubectl apply -f ./helm/templates/rbac.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/service_account.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/cluster_role_binding.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/cluster_role.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/crd.yaml
 
 # Now we need to deploy the operator using the image we created in the previous steps
 # If you run operator.yaml without updating the image location, you will deploy
 # whatever is in latest and you will not be able to see your changes.
+j2 ./pystol-operator/pystol/templates/controller.yaml.j2 \
+   ./pystol-operator/pystol/templates/localhost_values.yaml \
+   | kubectl apply -f -
 
-helm template \
-  --set appSettings.pystol.controller.image=localhost:5000/operator:latest \
-  --set appSettings.pystol.ui.image=localhost:5000/operator:latest \
-  --set appSettings.pystol.ui.api_host='labserver' \
-  --set appSettings.pystol.ui.api_port=3000 \
-  ./helm/ \
-  -f helm/templates/values.yaml \
-  -x templates/operator.yaml \
-  | kubectl apply -f -
+j2 ./pystol-operator/pystol/templates/ui.yaml.j2 \
+   ./pystol-operator/pystol/templates/localhost_values.yaml \
+   | kubectl apply -f -
 
-kubectl apply -f ./helm/templates/crd.yaml
+j2 ./pystol-operator/pystol/templates/config_map.yaml.j2 \
+   ./pystol-operator/pystol/templates/localhost_values.yaml \
+   | kubectl apply -f -
 ```
 
 The execution of the previous commands should not return any error.
@@ -274,7 +265,7 @@ Assuming you have them already execute:
 git clone git@github.com:pystol/pystol.git
 cd pystol/pystol-ui/
 sudo pip3 install -r ./pystol-operator/requirements.txt
-sudo pip3 install --upgrade ./pystol-operator
+sudo pip3 install --upgrade --force ./pystol-operator
 ```
 
 If you followed the Minikube install from Pystol docs

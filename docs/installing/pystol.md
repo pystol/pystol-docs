@@ -50,16 +50,13 @@ to your containers platform deployed, and execute from the
 root of the repository.
 
 ```bash
-kubectl apply -f ./helm/templates/rbac.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/rbac.yaml
 
-helm template \
-  ./helm/ \
-  -f helm/templates/values.yaml \
-  -x templates/operator.yaml \
-  | kubectl apply -f -
+j2 ./pystol-operator/pystol/templates/operator.yaml.j2 \
+   ./pystol-operator/pystol/templates/upstream_values.yaml \
+   | kubectl apply -f -
 
-kubectl apply -f ./helm/templates/crd.yaml
-
+kubectl apply -f ./pystol-operator/pystol/templates/crd.yaml
 ```
 
 All the previous commands should end correctly and without any errors.
