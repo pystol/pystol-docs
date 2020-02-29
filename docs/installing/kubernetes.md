@@ -53,7 +53,7 @@ sudo dnf update -y
 sudo dnf groupinstall "Virtualization Host" -y
 sudo dnf install libvirt qemu-kvm virt-install virt-top libguestfs-tools bridge-utils -y
 sudo dnf install git lvm2 lvm2-devel -y
-sudo dnf install libvirt-python python-lxml libvirt curl -y
+sudo dnf install python3-libvirt python-lxml libvirt curl -y
 sudo dnf install binutils qt gcc make patch libgomp -y
 sudo dnf install glibc-headers glibc-devel kernel-headers -y
 sudo dnf install kernel-devel dkms bash-completion -y
