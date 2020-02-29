@@ -263,7 +263,6 @@ Assuming you have them already execute:
 
 ```bash
 git clone git@github.com:pystol/pystol.git
-cd pystol/pystol-ui/
 sudo pip3 install -r ./pystol-operator/requirements.txt
 sudo pip3 install --upgrade --force ./pystol-operator
 ```
@@ -414,6 +413,17 @@ And then the Kubernetes job will execute:
 
 ```bash
 ansible-galaxy install --force -r requirements.yml
+```
+
+Installing locally the collection:
+
+```bash
+cd ./actions/
+mkdir -p releases
+ansible-galaxy collection build -v --force --output-path releases/
+cd releases
+LATEST=$(ls *.tar.gz | grep -v latest | sort -V | tail -n1)
+ansible-galaxy collection install --force $LATEST
 ```
 
 To finish executing the **pingtest** role installed from the previously defined source.
