@@ -152,10 +152,10 @@ We will do this by using jinja templates to replace the values with a custom one
 
 ```bash
 kubectl apply -f ./pystol-operator/pystol/templates/namespace.yaml
-kubectl apply -f ./pystol-operator/pystol/templates/cluster_role.yaml
-kubectl apply -f ./pystol-operator/pystol/templates/service_account.yaml
-kubectl apply -f ./pystol-operator/pystol/templates/cluster_role_binding.yaml
 kubectl apply -f ./pystol-operator/pystol/templates/crd.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/service_account.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/cluster_role.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/cluster_role_binding.yaml
 
 # Now we need to deploy the operator using the image we created in the previous steps
 # If you run operator.yaml without updating the image location, you will deploy
