@@ -151,6 +151,10 @@ Let's update the content of the file
 We will do this by using jinja templates to replace the values with a custom one.
 
 ```bash
+j2 ./pystol-operator/pystol/templates/config_map.yaml.j2 \
+   ./pystol-operator/pystol/templates/localhost_values.yaml \
+   | kubectl apply -f -
+
 kubectl apply -f ./pystol-operator/pystol/templates/namespace.yaml
 kubectl apply -f ./pystol-operator/pystol/templates/crd.yaml
 kubectl apply -f ./pystol-operator/pystol/templates/service_account.yaml
@@ -165,10 +169,6 @@ j2 ./pystol-operator/pystol/templates/controller.yaml.j2 \
    | kubectl apply -f -
 
 j2 ./pystol-operator/pystol/templates/ui.yaml.j2 \
-   ./pystol-operator/pystol/templates/localhost_values.yaml \
-   | kubectl apply -f -
-
-j2 ./pystol-operator/pystol/templates/config_map.yaml.j2 \
    ./pystol-operator/pystol/templates/localhost_values.yaml \
    | kubectl apply -f -
 ```
