@@ -150,9 +150,9 @@ Let's update the content of the file
 
 We will do this by using jinja templates to replace the values with a custom one.
 
+```bash
 kubectl apply -f ./pystol-operator/pystol/templates/namespace.yaml
 
-```bash
 j2 ./pystol-operator/pystol/templates/config_map.yaml.j2 \
    ./pystol-operator/pystol/templates/localhost_values.yaml \
    | kubectl apply -f -
