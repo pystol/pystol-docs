@@ -75,13 +75,13 @@ with the dashboard title.
 Replace:
 
 ```
-<div id="kubernetestitle">The cloud chaos engineering toolbox</div>
+<div id="kubernetestitle">The fault injection platform</div>
 ```
 
 With:
 
 ```
-<div id="kubernetestitle">The cloud chaos engineering toolbox (testing changes)</div>
+<div id="kubernetestitle">The fault injection platform (testing changes)</div>
 ```
 
 Now, the next step is to build a new container image to see our changes refreshed.
