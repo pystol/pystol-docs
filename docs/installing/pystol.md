@@ -97,7 +97,7 @@ Then use it to create a port-forward rule.
 
 ```bash
 # Replace pystol-ui-799c8987cd-hs42p with the ID of the pystol-ui pod.
-kubectl port-forward pystol-ui-799c8987cd-hs42p 3000:3000
+kubectl port-forward -n pystol --address 0.0.0.0 pystol-ui-799c8987cd-hs42p 3000:3000
 ```
 
 This will forward the 3000 port from the pod to the machine having access to the kubectl CLI. After running this
@@ -110,7 +110,7 @@ command you should be able to get access to the following screen located at `htt
 It might be faster if you just parse the output of the get pods output and insert it directly in the port-forward command.
 
 ```bash
-kubectl port-forward  `kubectl get pods -n pystol | grep pystol-ui | grep Running | head -n1 | cut -d' ' -f1` -n pystol 3000:3000
+kubectl port-forward -n pystol --address 0.0.0.0 `kubectl get pods -n pystol | grep pystol-ui | grep Running | head -n1 | cut -d' ' -f1` 3000:3000
 ```
 
 ---
