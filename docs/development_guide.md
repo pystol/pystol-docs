@@ -172,6 +172,9 @@ j2 ./pystol-operator/pystol/templates/controller.yaml.j2 \
 j2 ./pystol-operator/pystol/templates/ui.yaml.j2 \
    ./pystol-operator/pystol/templates/localhost_values.yaml \
    | kubectl apply -f -
+
+kubectl apply -f ./pystol-operator/pystol/templates/service.yaml
+
 ```
 
 The execution of the previous commands should not return any error.
