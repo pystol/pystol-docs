@@ -98,6 +98,9 @@ class Termynal {
 
             line.removeAttribute(`${this.pfx}-cursor`);
         }
+        /*To restart the console each 5 seconds*/
+        $().delay(5000)
+        this.init();
     }
 
     /**
