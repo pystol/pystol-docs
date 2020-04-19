@@ -13,15 +13,14 @@
 }
 
 [data-termynal] {
-
-  width: 750px;
+  width: 100%;
   max-width: 100%;
-  font-size: 18px;
+  font-size: 10pt;
     background: var(--color-bg);
     color: var(--color-text);
     font-family: 'Fira Mono', Consolas, Menlo, Monaco, 'Courier New', Courier, monospace;
-    border-radius: 4px;
-    padding: 75px 45px 35px;
+    border-radius: 5px;
+    padding: 45px 35px 35px;
     position: relative;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
