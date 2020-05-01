@@ -67,6 +67,7 @@ class Termynal {
 
         this.container.setAttribute('data-termynal', '');
         this.container.innerHTML = '';
+
         this.start();
     }
 
@@ -99,8 +100,7 @@ class Termynal {
             line.removeAttribute(`${this.pfx}-cursor`);
         }
         /*To restart the console each 5 seconds*/
-        $().delay(5000)
-        this.init();
+        this.init()
     }
 
     /**

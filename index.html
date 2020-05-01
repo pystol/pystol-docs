@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Pystol - The fault injection platform</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://www.pystol.org/assets/images/favicon.png">
+
+    <!-- Core Stylesheet -->
+    <link href="assets/style.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="assets/css/responsive/responsive.css" rel="stylesheet">
+    <!-- Termynal CSS -->
+    <link rel="stylesheet" href="assets/css/termynal.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono">
+
+</head>
+
+<body>
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="loader">
+            <span class="inner1"></span>
+            <span class="inner2"></span>
+            <span class="inner3"></span>
+        </div>
+    </div>
+
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area" id="header">
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100">
+                    <nav class="h-100 navbar navbar-expand-lg align-items-center">
+                        <a class="navbar-brand" href="index.html"><img src="assets/img/pystol_header.svg" alt=""></a>
+                        <!--<span class="navbar-brand"><img src="img/pystol_header.svg" alt=""></span>-->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fancyNav" aria-controls="fancyNav" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
+                        <div class="collapse navbar-collapse" id="fancyNav">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item js-scroll-trigger active">
+                                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#usecases">Use cases</a>
+                                </li>
+                                <!--
+                                <li class="nav-item">
+                                    <a class="nav-link js-scroll-trigger" href="#research">Research</a>
+                                </li>
+                              -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="https://docs.pystol.org">Documentation</a>
+                                </li>
+                            </ul>
+                            <!-- Search & Shop Btn Area -->
+                            <div class="fancy-search-and-shop-area">
+                                <a id="shop-btn" href="https://github.com/pystol"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Hero Area Start ***** -->
+    <div id="home" class="fancy-hero-area bg-img bg-overlay animated-img" style="background-image: url(assets/img/bg-img/bg.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-sm-12 col-md-5">
+                    <div class="fancy-hero-content text-center">
+                        <h2>The fault injection platform</h2>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-7">
+                  <div id="termynal" data-termynal data-ty-startDelay="3000" data-ty-typeDelay="50" data-ty-lineDelay="1000">
+                      <span data-ty="input">pip install pystol</span>
+                      <span data-ty="progress"></span>
+                      <span data-ty>Successfully installed pystol</span>
+                      <span data-ty="input">pystol deploy</span>
+                      <span data-ty>🚀 Deploying Pystol in the cluster.</span>
+                      <span data-ty>    📦 Namespace created.           📦 Config map created.</span>
+                      <span data-ty>    📦 CRD created.                 📦 Service account created.</span>
+                      <span data-ty>    📦 Role created.                📦 Cluster role bindings created.</span>
+                      <span data-ty>    📦 Operator deployment created. 📦 UI deployment created.</span>
+                      <span data-ty>    📦 Service created.</span>
+                      <span data-ty>🏄 Done! Pystol is now deployed.</span>
+                      <span data-ty>🕐 Wait a few seconds to have the deployments up and running.</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Hero Area End ***** -->
+
+    <!-- ***** Top Feature Area Start ***** -->
+    <div class="fancy-top-features-area bg-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="fancy-top-features-content">
+                        <div class="row no-gutters">
+                            <div class="col-12 col-md-4">
+                                <div class="single-top-feature">
+                                    <h5><i class="fas fa-lock-open" aria-hidden="true"></i> OpenSource</h5>
+                                    <p>Pystol will always be 100% OpenSource. </p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="single-top-feature">
+                                    <h5><i class="fas fa-infinity" aria-hidden="true"></i> Improving resiliency</h5>
+                                    <p>We help improving system's resiliency. </p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="single-top-feature">
+                                    <h5><i class="fas fa-cloud" aria-hidden="true"></i> Cloud Native</h5>
+                                    <p>Created in the cloud, for the cloud. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Top Feature Area End ***** -->
+
+
+        <!-- ***** Skills Area Start ***** -->
+    <section id="about" class="fancy-skills-area section-padding-200">
+            <!-- Side Thumb -->
+
+            <!-- Skills Content -->
+            <div class="container">
+
+
+              <div class="row">
+                  <div class="col-12">
+                      <div class="section-heading text-center">
+                          <h2>About Pystol</h2>
+                          <p>This is the Fault injection platform</p>
+                      </div>
+                  </div>
+              </div>
+
+                              <div class="row justify-content-center">
+                                  <div class="col-12">
+                                      <div class="row no-gutters">
+
+                              <!--
+                                          <div class="col-2 col-sm-1">
+                                              <div class="single-post-share-info">
+                                                  <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                  <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                  <a href="#" class="googleplus"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                                  <a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                  <a href="#" class="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                                              </div>
+                                          </div>
+-->
+                                          <!-- Single Post -->
+                                          <!--
+                                          <div class="col-10 col-sm-11">
+                                          -->
+                                          <div class="col-12 col-sm-12">
+                                              <div class="single-post">
+                                                  <!-- Post Thumb -->
+                                                  <div class="post-thumb">
+                                                      <img src="assets/img/bg-img/phases.png" alt="">
+                                                  </div>
+                                                  <!-- Post Content -->
+                                                  <div class="post-content">
+                                                      <p>
+                                                        Pystol was created to demonstrate the correlation between
+                                                        the execution of a fault injection action and the
+                                                        change in the Kubernetes based cluster behavior.
+                                                      </p>
+                                                      <!--
+                                                      <p>Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qui s nostrud exercitation ullamLorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                      <h4>The best Wordpress Theme 2017</h4>
+                                                      <p>Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+
+                                                      <blockquote class="fancy-blockquote">
+                                                          <span class="quote playfair-font">“</span>
+                                                          <h5 class="mb-4">“If you’re going to try, go all the way. There is no other feeling like that. You will be alone with the gods, and the nights will flame with fire. You will ride life straight to perfect laughter. It’s the only good fight there is.”</h5>
+                                                          <h6>Aigars Silkalns - <span>CEO DeerCreative</span></h6>
+                                                      </blockquote>
+                                                      <h4>Unique Design &amp; Easy Custom</h4>
+                                                      <p>Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea. Liusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, qui s nostrud exercitation ullamLorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                      <p>Duis aute irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+-->
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+
+
+
+            </div>
+    </section>
+
+
+
+
+    <!-- ***** Service Area Start ***** -->
+    <section  id="usecases"  class="fancy-services-area bg-img bg-overlay section-padding-100-70" style="background-image: url(assets/img/bg-img/smart-ux-use-cases-lead.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading heading-white text-center">
+                        <h2>Use cases</h2>
+                        <p>Pystol works in several escenarios.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Service -->
+                <div class="col-12 col-md-4">
+                    <div class="single-service-area text-center wow fadeInUp" data-wow-delay="0.5s">
+                        <i class="fas fa-globe"></i>
+                        <h5>Production testing</h5>
+                        <p>
+                          Run Pystol in your Production
+                          systems with safety and control of everything.
+                         </p>
+                    </div>
+                </div>
+                <!-- Single Service -->
+                <div class="col-12 col-md-4">
+                    <div class="single-service-area text-center wow fadeInUp" data-wow-delay="1s">
+                        <i class="fas fa-project-diagram"></i>
+                        <h5>The edge</h5>
+                        <p>
+                          Testing real time systems in the edge with Pystol allows to
+                          determine wether if cloud platforms are resilient enough
+                          to handle different types of errors.
+                        </p>
+                    </div>
+                </div>
+                <!-- Single Service -->
+                <div class="col-12 col-md-4">
+                    <div class="single-service-area text-center wow fadeInUp" data-wow-delay="1.5s">
+                        <i class="fas fa-cubes"></i>
+                        <h5>Hybrid cloud</h5>
+                        <p>We can run Pystol in any Kubernetes based cluster.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Service Area End ***** -->
+
+
+<!--
+
+    <section class="fancy-testimonials-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="testimonials-slides owl-carousel">
+
+                        <div class="single-testimonial d-md-flex align-items-center">
+
+                            <div class="testimonial-thumbnail">
+                                <img src="assets/img/clients-img/1.jpg" alt="">
+                            </div>
+
+                            <div class="testimonilas-content">
+                                <span class="playfair-font quote">“</span>
+                                <h5>I wanted to mention that these days, when the opposite of good customer and tech support tends to be the norm, it’s always great having a team like you guys at Fancy! So, be sure that I’ll always spread the word about how good your product is and the extraordinary level of support that you provide any time there is any need for it.</h5>
+                                <h6>Aigars Silkalns - <span>CEO DeerCreative</span></h6>
+                            </div>
+                        </div>
+
+                        <div class="single-testimonial d-md-flex align-items-center">
+
+                            <div class="testimonial-thumbnail">
+                                <img src="assets/img/clients-img/1.jpg" alt="">
+                            </div>
+
+                            <div class="testimonilas-content">
+                                <span class="playfair-font quote">“</span>
+                                <h5>I wanted to mention that these days, when the opposite of good customer and tech support tends to be the norm, it’s always great having a team like you guys at Fancy! So, be sure that I’ll always spread the word about how good your product is and the extraordinary level of support that you provide any time there is any need for it.</h5>
+                                <h6>Aigars Silkalns - <span>CEO DeerCreative</span></h6>
+                            </div>
+                        </div>
+
+                        <div class="single-testimonial d-md-flex align-items-center">
+
+                            <div class="testimonial-thumbnail">
+                                <img src="assets/img/clients-img/1.jpg" alt="">
+                            </div>
+
+                            <div class="testimonilas-content">
+                                <span class="playfair-font quote">“</span>
+                                <h5>I wanted to mention that these days, when the opposite of good customer and tech support tends to be the norm, it’s always great having a team like you guys at Fancy! So, be sure that I’ll always spread the word about how good your product is and the extraordinary level of support that you provide any time there is any need for it.</h5>
+                                <h6>Aigars Silkalns - <span>CEO DeerCreative</span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="research" class="fancy-cta-area bg-img bg-overlay section-padding-100-70" style="background-image: url(assets/img/bg-img/hero-3.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="cta-content text-center">
+                        <h2>Research</h2>
+                        <p>There are many ways to contact us. You may drop us a line, give us a call or send an email, choose what suits you the most.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="fancy-blog-area section-padding-100-70">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-md-4">
+                    <div class="single-blog-area wow fadeInUp" data-wow-delay="0.5s">
+                        <img src="assets/img/blog-img/blog-1.jpg" alt="">
+                        <div class="blog-content">
+                            <h5><a href="static-page.html">We Create Experiences</a></h5>
+                            <p>The Fancy that recognize the talent and effort of the best web designers, developers and agencies in the world.</p>
+                            <a href="static-page.html">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="single-blog-area wow fadeInUp" data-wow-delay="1s">
+                        <img src="assets/img/blog-img/blog-2.jpg" alt="">
+                        <div class="blog-content">
+                            <h5><a href="static-page.html">Simple, Fast And Fun</a></h5>
+                            <p>The Fancy that recognize the talent and effort of the best web designers, developers and agencies in the world.</p>
+                            <a href="static-page.html">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="single-blog-area wow fadeInUp" data-wow-delay="1.5s">
+                        <img src="assets/img/blog-img/blog-3.jpg" alt="">
+                        <div class="blog-content">
+                            <h5><a href="static-page.html">Device Friendly</a></h5>
+                            <p>The Fancy that recognize the talent and effort of the best web designers, developers and agencies in the world.</p>
+                            <a href="static-page.html">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="single-blog-area wow fadeInUp" data-wow-delay="2s">
+                        <img src="assets/img/blog-img/blog-1.jpg" alt="">
+                        <div class="blog-content">
+                            <h5><a href="static-page.html">We Create Experiences</a></h5>
+                            <p>The Fancy that recognize the talent and effort of the best web designers, developers and agencies in the world.</p>
+                            <a href="static-page.html">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="single-blog-area wow fadeInUp" data-wow-delay="2.5s">
+                        <img src="assets/img/blog-img/blog-2.jpg" alt="">
+                        <div class="blog-content">
+                            <h5><a href="static-page.html">Simple, Fast And Fun</a></h5>
+                            <p>The Fancy that recognize the talent and effort of the best web designers, developers and agencies in the world.</p>
+                            <a href="static-page.html">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="single-blog-area wow fadeInUp" data-wow-delay="3s">
+                        <img src="assets/img/blog-img/blog-3.jpg" alt="">
+                        <div class="blog-content">
+                            <h5><a href="static-page.html">Device Friendly</a></h5>
+                            <p>The Fancy that recognize the talent and effort of the best web designers, developers and agencies in the world.</p>
+                            <a href="static-page.html">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+-->
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="fancy-footer-area fancy-bg-dark">
+        <!-- Footer Copywrite -->
+        <div class="footer-copywrite-area">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100">
+                        <div class="copywrite-content h-100 d-flex align-items-center justify-content-between">
+                            <!-- Copywrite Text -->
+                            <div class="copywrite-text">
+                                <p>Pystol.org <script>document.write(new Date().getFullYear());</script> - The fault injection platform</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ***** Footer Area End ***** -->
+
+    <!-- jQuery-2.2.4 js -->
+    <script src="assets/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="assets/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap-4 js -->
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="assets/js/others/plugins.js"></script>
+    <!-- Active JS -->
+    <script src="assets/js/active.js"></script>
+    <script src="assets/js/termynal.js" data-termynal-container="#termynal"></script>
+
+
+
+        <script>
+
+
+
+
+        (function($) {
+          "use strict"; // Start of use strict
+
+          // Smooth scrolling using jQuery easing
+          $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+              if (target.length) {
+                $('html, body').animate({
+                  scrollTop: (target.offset().top - 56)
+                }, 1000, "easeInOutExpo");
+                return false;
+              }
+            }
+          });
+
+          // Closes responsive menu when a scroll trigger link is clicked
+          $('.js-scroll-trigger').click(function() {
+            $('.navbar-collapse').collapse('hide');
+          });
+
+          // Activate scrollspy to add active class to navbar items on scroll
+          $('body').scrollspy({
+            target: '#mainNav',
+            offset: 56
+          });
+
+        })(jQuery); // End of use strict
+
+
+
+        </script>
+</body>

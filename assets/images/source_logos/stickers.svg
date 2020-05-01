@@ -22,6 +22,16 @@
    inkscape:export-ydpi="100.095">
   <defs
      id="defs2">
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect1615"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath1086">
@@ -201,8 +211,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="-3306.295"
-     inkscape:cy="4983.0637"
+     inkscape:cx="-4964.8448"
+     inkscape:cy="5070.3376"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -217,7 +227,7 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:snap-global="false"
+     inkscape:snap-global="true"
      inkscape:snap-nodes="true"
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-midpoints="true" />
@@ -3689,5 +3699,94 @@
        cx="-742.77704"
        cy="-1037.7413"
        r="0.49999976" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.76880217px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.11922003"
+       x="-1006.7142"
+       y="-1152.4214"
+       id="text1454-8-8-4-7-4-4-0-7-2-8"
+       inkscape:export-filename="D:\OneDrive - Universidad Complutense de Madrid (UCM)\strix\Desktop\hexa.png"
+       inkscape:export-xdpi="100.095"
+       inkscape:export-ydpi="100.095"><tspan
+         sodipodi:role="line"
+         x="-1006.7142"
+         y="-1152.4214"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'The Bold Font';-inkscape-font-specification:'The Bold Font Bold';text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.11922003"
+         id="tspan1370-2-5-44-7-4-9">CHAOS CLUB</tspan></text>
+    <path
+       inkscape:export-ydpi="100.095"
+       inkscape:export-xdpi="100.095"
+       inkscape:export-filename="C:\Users\strix\Dropbox\sticker.png"
+       d="m -1017.9971,-1144.1699 h 1.0237 l 0.5117,0.8863 -0.5117,0.8859 h -1.0237 l -0.5117,-0.8859 z m 5.6393,-3.2763 h 1.1817 1.1817 3.9824 5.3098 3.56943 l 3.15147,5.4582 -3.15147,5.4579 h -5.45263 -0.8498 -1.5757 l -3.9392,6.8232 h -4.7269 l 5.5149,-9.552 0.7878,-1.3646 h 6.3026 0.7877 0.78773 l 0.7881,-1.3645 -0.7881,-1.3646 h -0.78773 -0.4182 -5.3098 -3.9824 -1.1817 -1.1817 l -1.1818,-2.047 z m -5.6393,-0.9553 h 1.0237 l 0.5117,0.8864 -0.5117,0.8861 h -1.0237 l -0.5117,-0.8861 z m -0.5117,-1.7742 -2.5416,4.4019 h -0.4441 l -1.0818,-1.048 0.5156,1.4222 -0.5156,1.4226 1.0816,-1.0484 h 0.4443 l 2.5416,4.4019 h 5.5149 2.4684 l -5.515,9.5517 -1.5757,2.7295 -0.7877,1.3644 h 1.5754 1.5757 7.8785 l 3.9391,-6.8228 h 7.87813 l 4.72723,-8.1873 -4.72723,-8.1877 h -7.43983 -2.014 -7.983 z"
+       style="fill:#c25d02;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.27825066"
+       id="path1576-6"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.28080118;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -1024.0248,-1158.5018 v 26.1777 h 0.017 a 17.273657,17.273657 0 0 0 -0.01,0.1287 17.273657,17.273657 0 0 0 17.2738,17.2739 17.273657,17.273657 0 0 0 17.2734,-17.2739 17.273657,17.273657 0 0 0 -0.005,-0.1287 h 0.0165 v -26.1777 z"
+       id="path1493"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:#c25d02;stroke-width:7.2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect1390-0-2"
+       width="420"
+       height="190"
+       x="-1678.9667"
+       y="-1124.0917"
+       rx="7.3999991"
+       ry="6.6999907" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:49.47254944px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.23681366"
+       x="-1533.5391"
+       y="-949.65814"
+       id="text1454-82-1-4"><tspan
+         sodipodi:role="line"
+         id="tspan1452-8-2-4"
+         x="-1533.5391"
+         y="-949.65814"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'The Bold Font';-inkscape-font-specification:'The Bold Font Bold Italic';fill:#ffffff;stroke-width:1.23681366">YSTOL.ORG</tspan></text>
+    <g
+       id="g1611"
+       transform="translate(-5.130062,4.4979167)">
+      <text
+         id="text1454-8-8-4-7-4-3"
+         y="-1075.9879"
+         x="-1423.8629"
+         style="font-style:normal;font-weight:normal;font-size:31.22728157px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.78068179"
+         xml:space="preserve"><tspan
+           id="tspan1370-2-4"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:31.75px;font-family:'The Bold Font';-inkscape-font-specification:'The Bold Font Bold';fill:#ffffff;stroke-width:0.78068179"
+           y="-1075.9879"
+           x="-1423.8629"
+           sodipodi:role="line">THE  FAULT</tspan></text>
+      <text
+         id="text1454-8-8-4-7-4-3-3"
+         y="-1018.319"
+         x="-1425.0189"
+         style="font-style:normal;font-weight:normal;font-size:31.22728348px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.78068179"
+         xml:space="preserve"><tspan
+           id="tspan1370-2-4-3"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:31.75px;font-family:'The Bold Font';-inkscape-font-specification:'The Bold Font Bold';fill:#ffffff;stroke-width:0.78068179"
+           y="-1018.319"
+           x="-1425.0189"
+           sodipodi:role="line">PLATFORM</tspan></text>
+      <text
+         id="text1454-8-8-4-7-4-3-33"
+         y="-1047.0106"
+         x="-1425.4877"
+         style="font-style:normal;font-weight:normal;font-size:31.22728348px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.78068179"
+         xml:space="preserve"><tspan
+           id="tspan1370-2-4-7"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:31.75px;font-family:'The Bold Font';-inkscape-font-specification:'The Bold Font Bold';fill:#ffffff;stroke-width:0.78068179"
+           y="-1047.0106"
+           x="-1425.4877"
+           sodipodi:role="line">INJECTION</tspan></text>
+    </g>
+    <path
+       style="opacity:1;vector-effect:none;fill:#c25d02;fill-opacity:1;stroke:none;stroke-width:28.87797737;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -1634.7595,-1109.2178 -17.5571,30.4103 h -3.0699 l -7.4722,-7.2427 3.5634,9.8254 -3.5634,9.826 7.4707,-7.2427 h 3.0718 l 17.5567,30.4098 h 38.0973 17.0506 l -38.0972,65.98711 -10.885,18.85304 -5.4422,9.42602 h 10.8845 10.8854 54.4241 l 27.2122,-47.13311 h 54.4244 l 32.6551,-56.55946 -32.6551,-56.5597 h -51.3959 -13.9134 -55.1475 z m 3.5352,12.2543 h 7.0698 l 3.5351,6.1227 -3.5351,6.123 h -7.0698 l -3.5352,-6.123 z m 38.9551,6.5987 h 8.1637 8.1635 27.5124 36.6816 24.6576 l 21.7696,37.7067 -21.7696,37.7064 h -37.6689 -5.8705 -10.8845 l -27.2127,47.13315 h -32.654 l 38.0967,-65.98565 5.4428,-9.4275 h 43.539 5.4427 5.4423 l 5.4427,-9.4264 -5.4427,-9.4267 h -5.4423 -2.8882 -36.6816 -27.5124 -8.1635 -8.1637 l -8.1635,-14.14 z m -38.9551,22.6331 h 7.0698 l 3.5351,6.1229 -3.5351,6.1223 h -7.0698 l -3.5352,-6.1223 z"
+       id="path1865-0-4-6-1-1"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>
