@@ -1084,7 +1084,9 @@ li {
     text-align: center;
     background-color: #ddd;
     line-height: 30px;
+/*
     border-radius: 50%;
+*/
     font-size: 14px;
     color: #fff;
 }
