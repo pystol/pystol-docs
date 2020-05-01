@@ -451,7 +451,7 @@ li {
 }
 
 .search-close-btn {
-    color: #2bc0a4;
+    color: #c25d02;
     font-size: 30px;
     top: 8px;
     position: absolute;
@@ -501,7 +501,7 @@ li {
     line-height: 30px;
     margin-right: 15px;
     border-radius: 50%;
-    color: #2bc0a4;
+    color: #c25d02;
 }
 
 .fancy-hero-content h2 {
@@ -585,7 +585,7 @@ li {
 }
 
 .single-top-feature h5 i {
-    color: #2bc0a4;
+    color: #c25d02;
 }
 
 /* About Us Area CSS */
@@ -833,7 +833,7 @@ li {
     display: block;
     font-size: 14px;
     text-transform: capitalize;
-    color: #2bc0a4;
+    color: #c25d02;
     text-decoration: underline;
     font-weight: 400;
 }
@@ -898,7 +898,7 @@ li {
 }
 
 .footer-social-widegt > a {
-    color: #2bc0a4;
+    color: #c25d02;
     font-size: 14px;
     -webkit-box-flex: 1;
     -ms-flex: 1;
@@ -918,7 +918,7 @@ li {
 }
 
 .single-tweet a > i {
-    color: #2bc0a4;
+    color: #c25d02;
 }
 
 .single-tweet span {
@@ -944,7 +944,7 @@ li {
 
 .single-footer-widget ul li a:hover {
     margin-left: 5px;
-    color: #2bc0a4;
+    color: #c25d02;
 }
 
 .footer-copywrite-area {
@@ -1185,7 +1185,7 @@ li {
 
 .categories-widget ul > li > a > i {
     font-size: 8px;
-    color: #2bc0a4;
+    color: #c25d02;
     margin-right: 10px;
 }
 
