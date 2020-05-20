@@ -54,7 +54,7 @@ $(kubectl get po -n kube-system | grep kube-registry-v0 | \awk '{print $1;}') 50
 
 ## Testing changes into the Kubernetes platform
 
-Once we have the local registry working, we will make a change in the repository,
+Once the local registry is working, we will make a change in the repository,
 create the image, push it, and deploy it to MiniKube/MiniShift.
 
 Clone the main Repository.
