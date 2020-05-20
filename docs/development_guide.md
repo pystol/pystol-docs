@@ -278,7 +278,7 @@ present.
 There it is all the information related to make the bindings
 between the Pystol CLI and the Minikube deployment.
 
-Note: When Pystol run from a container the
+Note: When Pystol runs from a container the
 **load_incluster_config** method will automatically load
 the cluster config.
 
