@@ -32,10 +32,12 @@
         var jsonObj = $.parseJSON(response.responseText);
         var stargazeres = getLastStargazers(jsonObj);
         var winner = getWinner(stargazeres);
-        document.getElementById("winner_img").src = winner.user.avatar_url;
-        document.getElementById("winner_id").innerHTML = winner.user.login;
-        document.getElementById("winner_starred_at").innerHTML = winner.starred_at;
-        $('#myModal').modal('show');
+        if (winner) {
+          document.getElementById("winner_img").src = winner.user.avatar_url;
+          document.getElementById("winner_id").innerHTML = winner.user.login;
+          document.getElementById("winner_starred_at").innerHTML = winner.starred_at;
+          $('#myModal').modal('show');
+        }
       },
       error: function () {
         $('#output').html('Bummer: there was an error!');
