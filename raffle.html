@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
   function getLastStargazers(list) {
     var current_date = new Date();
     current_date.setHours(current_date.getHours() - 2)
-    return list.filter(x => Date.parse(x.starred_at) > current_date);
+    return list.filter(x => Date.parse(x.starred_at) > Date.parse(current_date));
   }
   function getWinnerOutput() {
     $.ajax({
@@ -40,7 +41,7 @@
         }
       },
       error: function () {
-        $('#output').html('Bummer: there was an error!');
+        alert('Bummer: there was an error!');
       },
     });
     return false;
