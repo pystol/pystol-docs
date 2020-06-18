@@ -7,46 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Pystol - The fault injection platform</title>
-  <link rel="icon" type="image/png" href="https://www.pystol.org/assets/images/favicon.png">
-  <link href="https://www.pystol.org/assets/style.css" rel="stylesheet">
-  <link href="https://www.pystol.org/assets/css/responsive/responsive.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link href="assets/style.css" rel="stylesheet">
+  <link href="assets/css/responsive/responsive.css" rel="stylesheet">
   <meta property="og:site_name" content="pystol.org - The fault injection platform">
   <meta property="og:title" content="Pystol" />
   <meta property="og:description" content="The fault injection platform" />
-  <meta property="og:image" itemprop="image" content="https://www.pystol.org/assets/img/pystol-thumb.png">
+  <meta property="og:image" itemprop="image" content="assets/img/pystol-thumb.png">
   <meta property="og:type" content="website" />
-  <script>
-  function getWinner(list) {
-    return list[Math.floor((Math.random()*list.length))];
-  }
-  function getLastStargazers(list) {
-    var current_date = new Date();
-    current_date.setHours(current_date.getHours() - 2)
-    return list.filter(x => Date.parse(x.starred_at) > Date.parse(current_date));
-  }
-  function getWinnerOutput() {
-    $.ajax({
-      url:'https://api.github.com/repos/pystol/pystol/stargazers',
-      type: "GET",
-      headers: {Accept: 'application/vnd.github.v3.star+json'},
-      complete: function (response) {
-        var jsonObj = $.parseJSON(response.responseText);
-        var stargazeres = getLastStargazers(jsonObj);
-        var winner = getWinner(stargazeres);
-        if (winner) {
-          document.getElementById("winner_img").src = winner.user.avatar_url;
-          document.getElementById("winner_id").innerHTML = winner.user.login;
-          document.getElementById("winner_starred_at").innerHTML = winner.starred_at;
-          $('#myModal').modal('show');
-        }
-      },
-      error: function () {
-        alert('Bummer: there was an error!');
-      },
-    });
-    return false;
-  }
-  </script>
 </head>
 <body>
   <div id="preloader">
@@ -61,7 +29,7 @@
       <div class="row h-100">
         <div class="col-12 h-100">
           <nav class="h-100 navbar navbar-expand-lg align-items-center">
-            <a class="navbar-brand" href="/"><img src="https://www.pystol.org/assets/img/pystol_header.svg" alt=""></a>
+            <a class="navbar-brand" href="/"><img src="assets/img/pystol_header.svg" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fancyNav" aria-controls="fancyNav" aria-expanded="false" aria-label="Toggle navigation"><span class="ti-menu"></span></button>
             <div class="collapse navbar-collapse" id="fancyNav">
               <ul class="navbar-nav ml-auto">
@@ -85,14 +53,13 @@
       </div>
     </div>
   </header>
-  <div id="home" class="fancy-hero-area bg-img bg-overlay animated-img" style="background-image: url(https://www.pystol.org/assets/img/bg-img/bg.jpg);">
+  <div id="home" class="fancy-hero-area bg-img bg-overlay animated-img" style="background-image: url(assets/img/bg-img/bg.jpg);">
     <div class="container h-100">
       <div class="row h-100 align-items-center">
-
         <div class="container d-flex justify-content-center">
           <div class="row">
             <div class="col-md-12">
-              <button id='boton' onclick="getWinnerOutput()" type="button" class="btn btn-lg btn-warning">Get winner!</button>
+              <button id='boton' onclick="runRaffle()" type="button" class="btn btn-lg btn-warning">Get the winner!</button>
             </div>
           </div>
         </div>
@@ -109,7 +76,7 @@
           </div>
           <div class="post-content text-center">
             <p>
-              We will choose a random winner from tha last 2 hours stargazers of <a href="https://github.com/pystol/pystol">https://github.com/pystol/pystol</a>.
+              We will choose a random winner from the last 2 hours stargazers of <a href="https://github.com/pystol/pystol">https://github.com/pystol/pystol</a>.
             </p>
           </div>
         </div>
@@ -131,11 +98,12 @@
       </div>
     </div>
   </footer>
-  <script src="https://www.pystol.org/assets/js/jquery/jquery-2.2.4.min.js"></script>
-  <script src="https://www.pystol.org/assets/js/bootstrap/popper.min.js"></script>
-  <script src="https://www.pystol.org/assets/js/bootstrap/bootstrap.min.js"></script>
-  <script src="https://www.pystol.org/assets/js/others/plugins.js"></script>
-  <script src="https://www.pystol.org/assets/js/active.js"></script>
+  <script src="assets/js/jquery/jquery-2.2.4.min.js"></script>
+  <script src="assets/js/bootstrap/popper.min.js"></script>
+  <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+  <script src="assets/js/others/plugins.js"></script>
+  <script src="assets/js/active.js"></script>
+  <script src="assets/js/raffle.js"></script>
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
       <div class="card">
@@ -145,6 +113,8 @@
           <h1 id="winner_id"></h1>
           <img id='winner_img' width="150" height="150"/>
           <p id="winner_starred_at"></p>
+          <p>From a total of: </p>
+          <p id="winner_total"></p>
           <button class="btn btn-out btn-square continue">CONTINUE</button>
         </div>
       </div>
