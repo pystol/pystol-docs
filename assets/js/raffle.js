@@ -48,7 +48,7 @@ function getWinnerOutput(githubURL) {
           document.getElementById("winner_total").innerHTML = stargazeres.length;
           $('#myModal').modal('show');
         }else{
-          alert("There is no winner! :P LOL");
+          alert("No stargazers in the last 2 hours! ;( LOL");
         }
       }
     },
