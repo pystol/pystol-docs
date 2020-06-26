@@ -25,5 +25,5 @@ a valid Kubeconfig file to connect to the user's cluster.
 {: .no_toc }
 
 <div class="center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/97SJVUM01aQ" frameborder="0" allowfullscreen></iframe>
+  <iframe width="100%" height="400" src="https://www.youtube.com/embed/97SJVUM01aQ" frameborder="0" allowfullscreen></iframe>
 </div>
