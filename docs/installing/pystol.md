@@ -50,13 +50,30 @@ to your containers platform deployed, and execute from the
 root of the repository.
 
 ```bash
-kubectl apply -f ./pystol-operator/pystol/templates/rbac.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/namespace.yaml
 
-j2 ./pystol-operator/pystol/templates/operator.yaml.j2 \
+j2 ./pystol-operator/pystol/templates/config_map.yaml.j2 \
    ./pystol-operator/pystol/templates/upstream_values.yaml \
    | kubectl apply -f -
 
 kubectl apply -f ./pystol-operator/pystol/templates/crd.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/service_account.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/cluster_role.yaml
+kubectl apply -f ./pystol-operator/pystol/templates/cluster_role_binding.yaml
+
+# Now we need to deploy the operator using the image we created in the previous steps
+# If you run operator.yaml without updating the image location, you will deploy
+# whatever is in latest and you will not be able to see your changes.
+j2 ./pystol-operator/pystol/templates/controller.yaml.j2 \
+   ./pystol-operator/pystol/templates/upstream_values.yaml \
+   | kubectl apply -f -
+
+j2 ./pystol-operator/pystol/templates/ui.yaml.j2 \
+   ./pystol-operator/pystol/templates/upstream_values.yaml \
+   | kubectl apply -f -
+
+kubectl apply -f ./pystol-operator/pystol/templates/service.yaml
+
 ```
 
 All the previous commands should end correctly and without any errors.

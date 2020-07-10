@@ -201,54 +201,32 @@ the controller can recreate them.
 
 ---
 
-## Local development of the Web UI
+## Local development of the Web UI.
 
-There is a basic set of mocked data to launch the Web UI
-directly from a local environment.
-To be able to see it, we will need to launch the webpack
-dev server which by default will launch the mocked data.
+The Pystol web interface can be used as a Kubernetes dashboard
+to display the current state of your deployment.
 
-This is particularly useful to decouple the Kubernetes
-platform from the web development
-and allow a simpler workflow for pushing improvements
-and fixed to the web UI.
+**The Pystol UI is currently under heavy development**
 
-Make sure you have installed NodeJS:
-
-```
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo bash -
-sudo yum install nodejs -y
-node --version
-```
-
-Run the following commands to start a server with the web UI:
+In the case you are not using Pystol as your fault
+injection platform you can still use this web UI
+following the next steps.
 
 ```bash
 git clone git@github.com:pystol/pystol.git
-cd pystol/pystol-ui/
-npm install react-scripts
-npm install # Install the main dependencies, like the express for the custom API endpoints
-npm install pystol-wui # Install the web UI dependencies.
-npm run-script build # We build the Web UI.
+cd pystol/pystol-ui
+pip3 install -r requirements.txt
+export FLASK_APP=run.py
+# Set up the DEBUG environment
+#export FLASK_ENV=development
+flask run --host=0.0.0.0 --port=3000
 ```
 
-If you are executing minikube and you want to develop the UI using the
-APIs data from the K8s deployment, just execute.
+This will start the web interface and
+show the Kubernetes cluster status.
 
-```bash
-npm start
-```
-
-If you want to use the mocked data **No need for minikube at all** then execute:
-
-```bash
-npm run-script dev # Start the web server passing some env variable, to start the mock data.
-# npm run-script k8s-server # Start the web server passing some env variable, to start the mock data.
-```
-
-The webpack command should point to the URL to see the Web UI,
-by default in the port 3001.
-The API endpoints
+You need to run the Flask server from
+a machine with access to the cluster.
 
 ---
 
