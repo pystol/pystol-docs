@@ -18,7 +18,6 @@ in a single-node Kubernetes cluster.
 1. TOC
 {:toc}
 
-
 ## Pre-requirements
 
 The MiniKube/MiniShift VM requires approximately 4GB

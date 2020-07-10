@@ -1,18 +1,27 @@
 ---
 layout: default
 title: Services agreement
-nav_order: 10
-permalink: /docs/services-agreement
+parent: Legal
+nav_order: 1
+permalink: /docs/legal/services-agreement
 ---
 
 # Services agreement
 {: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Pystol obligations
 
 Pystol offers the Services as a hosted version of the platform
 for early users who will like to try it, this service is free in any
 case and there is no such responsibility of having it available 24/7.
+
+---
 
 ## Pystol usage
 
@@ -22,11 +31,15 @@ User has given access to the Services, and any person who gains access to the
 Services as a result of User’s failure to use reasonable security precautions,
 even if such use was not authorized by User.
 
+---
+
 ## Limitations on liability
 
 Pystol shall not be liable for any direct, indirect, incidental, special or consequential
 damages or loss of profit resulting from the use or inability to use any of its Services
 or for the cost of procurement of substitute services.
+
+---
 
 ## Modification
 Pystol reserves the right to revise the terms of this Agreement at any time with
