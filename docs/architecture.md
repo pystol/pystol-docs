@@ -51,41 +51,56 @@ This service is hosted at [try.pystol.org](https://try.pystol.org).
 
 ## Screenshots
 
-### Status pages
+### Cluster state pages
+
+The following pages show the current state of the cluster in terms of resources and deployed applications.
 
 #### Login interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/00_login.png)
 
 #### Connect interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/01_connect.png)
 
 #### Usage interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/02_usage.png)
 
 #### Namespaces interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/03_namespaces.png)
 
 #### Nodes interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/04_nodes.png)
 
 #### Pods interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/05_pods.png)
 
 ####  Graph interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/06_graph.png)
 
 ### Pystol specific pages
 
+The following pages show information about the specific Pystol options.
+
 ####  Executed interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/07_executed.png)
 
 #### Available interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/08_available.png)
 
 #### Run interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/09_run.png)
 
 #### Manage interface
+{: .no_toc }
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/10_manage.png)
 
 There is another page called F.A.Q. showing some frequently asked questions.
