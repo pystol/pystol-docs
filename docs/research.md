@@ -16,8 +16,7 @@ Here you will find references for academic projects, papers, and the research in
 1. TOC
 {:toc}
 
-* ### Chaos as a Software Product Line <br/> A platform for improving open hybrid-cloud systems resiliency
-
+### Chaos as a Software Product Line <br/> A platform for improving open hybrid-cloud systems resiliency
 #### Status: Submitted to Transactions on cloud computing 'Under review'
 {: .no_toc }
 
