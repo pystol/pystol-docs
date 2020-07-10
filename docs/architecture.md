@@ -50,8 +50,7 @@ This service is hosted at [try.pystol.org](https://try.pystol.org).
 
 ## Screenshots
 
-### Status pages
-{: .no_toc }
+#### Status pages
 
 * Login interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/00_login.png)
@@ -74,8 +73,7 @@ This service is hosted at [try.pystol.org](https://try.pystol.org).
 * Graph interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/06_graph.png)
 
-### Pystol specific pages
-{: .no_toc }
+#### Pystol specific pages
 
 * Executed interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/07_executed.png)
