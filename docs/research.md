@@ -8,9 +8,9 @@ permalink: /docs/research
 # Research
 {: .no_toc }
 
-Here you will find references for academic projects and research papers related to Pystol.
+Here you will find references for academic projects, papers, and the research interests of Pystol.
 
-## References
+## Articles
 {: .no_toc .text-delta }
 
 1. TOC
@@ -35,9 +35,10 @@ or public clouds. The proposed architecture shows a novel way for representing f
 Furthermore, we present a thorough empirical study carried out in real-world environments, providing promising results.
 
 ## Research interests
+{: .no_toc }
 
 * Study how fault injection actions affect the system behavior deployed over large-scale cluster configurations.
-* Stablishing relationships between the injected faults, the size of the system and the impact on the system performance.
+* Stablish relationships between the injected faults, the size of the system and the impact on the system performance.
 * Study the behavior of cloud-native systems with low latency requirements (for instance IoT and TelCo use cases), service mesh and software-defined networking applications, and edge architectures.
 * Study backup, restore, and disaster recovery mechanisms after executing the fault injection actions. In this way, it is possible to recover the cluster consistent state in a shorter period of time and guarantee a reduction of the fault injection actions impact.
-* Investigating different real-world applications to generate different workloads to be processed by the system, like cpu-intensive or data-intensive applications, produce different results when the fault actions are executed.
+* Investigate different real-world applications to generate different workloads to be processed by the system, like cpu-intensive or data-intensive applications, produce different results when the fault actions are executed.
