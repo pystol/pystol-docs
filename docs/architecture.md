@@ -46,45 +46,46 @@ this allows non experienced users to interact with the platform.
 It is also provided a hosted service for those who will like to try the platform,
 the requirement for this is to provide a valid Kubeconfig file.
 This service is hosted at [try.pystol.org](https://try.pystol.org).
+
 ---
 
 ## Screenshots
 
-#### Status pages
+### Status pages
 
-* Login interface
+#### Login interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/00_login.png)
 
-* Connect interface
+#### Connect interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/01_connect.png)
 
-* Usage interface
+#### Usage interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/02_usage.png)
 
-* Namespaces interface
+#### Namespaces interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/03_namespaces.png)
 
-* Nodes interface
+#### Nodes interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/04_nodes.png)
 
-* Pods interface
+#### Pods interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/05_pods.png)
 
-* Graph interface
+####  Graph interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/06_graph.png)
 
-#### Pystol specific pages
+### Pystol specific pages
 
-* Executed interface
+####  Executed interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/07_executed.png)
 
-* Available interface
+#### Available interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/08_available.png)
 
-* Run interface
+#### Run interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/09_run.png)
 
-* Manage interface
+#### Manage interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/10_manage.png)
 
 There is another page called F.A.Q. showing some frequently asked questions.
@@ -100,12 +101,6 @@ There is another page called F.A.Q. showing some frequently asked questions.
 * Pingtest.
 
 TODO: Add explanation after the article is published.
-
----
-
-## Roadmap
-
-See [milestones](https://github.com/pystol/pystol/milestones).
 
 ---
 

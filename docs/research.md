@@ -28,3 +28,4 @@ Here you will find references for academic projects, papers, and the research in
 * Study the behavior of cloud-native systems with low latency requirements (for instance IoT and TelCo use cases), service mesh and software-defined networking applications, and edge architectures.
 * Study backup, restore, and disaster recovery mechanisms after executing the fault injection actions. In this way, it is possible to recover the cluster consistent state in a shorter period of time and guarantee a reduction of the fault injection actions impact.
 * Investigate different real-world applications to generate different workloads to be processed by the system, like cpu-intensive or data-intensive applications, produce different results when the fault actions are executed.
+* Improve the observability of the system when fault injection actions are executed.
