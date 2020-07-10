@@ -1,15 +1,15 @@
 ---
 layout: default
 title: Guestbook application
-parent: Example architectures
+parent: Client applications
 nav_order: 1
-permalink: /docs/example-architectures/guestbook
+permalink: /docs/client-applications/guestbook
 ---
 
 # Guestbook application
 {: .no_toc }
 
-This document will describe an example use-case to run Pystol against an Apache Spark cluster.
+This document will describe an example use-case to run Pystol against a guestbook application.
 
 ## Table of contents
 {: .no_toc .text-delta }
