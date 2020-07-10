@@ -16,7 +16,7 @@ Here you will find references for academic projects and research papers related 
 1. TOC
 {:toc}
 
-## Chaos as a Software Product Line <br/> A platform for improving open hybrid-cloud systems resiliency
+### Chaos as a Software Product Line <br/> A platform for improving open hybrid-cloud systems resiliency
 
 #### Status: Submitted to Transactions on cloud computing 'Under review'
 {: .no_toc }
@@ -33,3 +33,11 @@ This work describes a novel fault injection platform, represented as a Software 
 spectrum of adverse conditions. This software platform is designed to be executed on top of cloud-native environments, either in private
 or public clouds. The proposed architecture shows a novel way for representing feature models based on UML component diagrams.
 Furthermore, we present a thorough empirical study carried out in real-world environments, providing promising results.
+
+## Research interests
+
+* Study how fault injection actions affect the system behavior deployed over large-scale cluster configurations.
+* Stablishing relationships between the injected faults, the size of the system and the impact on the system performance.
+* Study the behavior of cloud-native systems with low latency requirements (for instance IoT and TelCo use cases), service mesh and software-defined networking applications, and edge architectures.
+* Study backup, restore, and disaster recovery mechanisms after executing the fault injection actions. In this way, it is possible to recover the cluster consistent state in a shorter period of time and guarantee a reduction of the fault injection actions impact.
+* Investigating different real-world applications to generate different workloads to be processed by the system, like cpu-intensive or data-intensive applications, produce different results when the fault actions are executed.
