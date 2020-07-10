@@ -22,7 +22,7 @@ Usage of Pystol based in the two interfaces we have.
 New
 {: .label .label-green }
 
-How to use the web UI.
+The easiest way to explore the Web interface is to connect to the [hosted service](https://try.pystol.org)
 
 ---
 
@@ -32,4 +32,28 @@ How to use the web UI.
 New
 {: .label .label-green }
 
-How to use the CLI.
+```
+$ pystol -h
+usage: pystol [-h] [-v] [-b] {purge,run,listen,list,get,show,deploy} ...
+
+Pystol - CLI
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --version         show program's version number and exit
+  -b, --banner          Print Pystol.org banner
+
+Pystol subcommands:
+  {purge,run,listen,list,get,show,deploy}
+                        These are the options supported: The listen option
+                        will watch for CRD events. The run option will execute
+                        the Pystol actions against the cluster.
+    purge               Purge any Pystol deployed resource.
+    run                 CLI options to run the Pystol actions.
+    listen              CLI options to watch for CRs
+    list                CLI options to list CRs
+    get                 Get Pystol resource.
+    show                Get available Pystol actions.
+    deploy              Install the Pystol operator includes, deployment, RBAC
+                        rules, and CRD
+```

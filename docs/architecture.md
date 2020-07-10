@@ -8,7 +8,7 @@ permalink: /docs/architecture
 # Architecture
 {: .no_toc }
 
-Here we will describe the framework architecture.
+Here we will describe the platform architecture.
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -19,39 +19,89 @@ Here we will describe the framework architecture.
 ## Kubernetes operator
 
 This section will describe the K8s operator architecture.
-The main repository structure is described (see [Repository structure](#repository-structure)).
+
+TODO: Add the diagrams and explanation after the article is published.
 
 ---
 
 ## Pystol components
 
-Components description here.
+TODO: Add the diagrams and explanation after the article is published.
 
 ### CLI
 {: .no_toc }
 
-CLI description here.
+Pystol has integrated a CLI allowing users not to use the Web interface to
+execute the fault injection actions and fetch their results.
 
 ### UI
 {: .no_toc }
 
-UI description here.
+Pystol has also a Web interface integrated in the operator deployment
+this allows non experienced users to interact with the platform.
 
+### Hosted service
+{: .no_toc }
+
+It is also provided a hosted service for those who will like to try the platform,
+the requirement for this is to provide a valid Kubeconfig file.
+This service is hosted at [try.pystol.org](https://try.pystol.org).
 ---
 
 ## Screenshots
 
-![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/dashboard.png)
+### Status pages
+{: .no_toc }
+
+* Login interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/00_login.png)
+
+* Connect interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/01_dashboard.png)
+
+* Usage interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/02_usage.png)
+
+* Namespaces interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/03_namespaces.png)
+
+* Nodes interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/04_nodes.png)
+
+* Pods interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/05_pods.png)
+
+* Graph interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/06_graph.png)
+
+### Pystol specific pages
+{: .no_toc }
+
+* Executed interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/07_executed.png)
+
+* Available interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/08_available.png)
+
+* Run interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/09_run.png)
+
+* Manage interface
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/10_manage.png)
+
+There is another page called F.A.Q. showing some frequently asked questions.
 
 ---
 
 ## Features
 
-* Introduce random pods kill.
+* Kill pods.
 
-* Another.
+* Drain nodes.
 
-* Run tests.
+* Pingtest.
+
+TODO: Add explanation after the article is published.
 
 ---
 
@@ -65,8 +115,4 @@ See [milestones](https://github.com/pystol/pystol/milestones).
 
 * [Kubernetes](https://www.kubernetes.io)
 * [Python](https://www.python.org)
-* [React](https://github.com/facebook/react)
-* [Redux](https://github.com/reduxjs/redux)
-* [React-Graph-Vis](https://github.com/crubier/react-graph-vis)
-* [Jest](https://github.com/facebook/jest/)
-* [k8s dashboard](https://github.com/spekt8/spekt8)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
