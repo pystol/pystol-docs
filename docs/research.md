@@ -16,9 +16,9 @@ Here you will find references for academic projects and research papers related 
 1. TOC
 {:toc}
 
-### Chaos as a Software Product Line - A platform for improving open hybrid-cloud systems resiliency
+## Chaos as a Software Product Line <br/> A platform for improving open hybrid-cloud systems resiliency
 
-Status: Under review
+#### Status: Submitted to Transactions on cloud computing 'Under review'
 
 Nowadays, cloud-native software architectures have a significant relevance due to the speed and agility they provide.
 These properties lead relevant organizations in different industries, like video streaming (Netflix), car-sharing (Uber, Cabify), banking

@@ -57,7 +57,7 @@ This service is hosted at [try.pystol.org](https://try.pystol.org).
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/00_login.png)
 
 * Connect interface
-![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/01_dashboard.png)
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/01_connect.png)
 
 * Usage interface
 ![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/02_usage.png)

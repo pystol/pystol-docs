@@ -103,7 +103,7 @@ kubectl port-forward -n pystol --address 0.0.0.0 pystol-ui-799c8987cd-hs42p 3000
 This will forward the 3000 port from the pod to the machine having access to the kubectl CLI. After running this
 command you should be able to get access to the following screen located at `http://labserver:3000`
 
-![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/installing_pystol_dashboard.PNG)
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/02_usage.png)
 
 ### Shortcuts
 

@@ -103,6 +103,7 @@ sudo podman push localhost:5000/operator --tls-verify=false
 # buildah bud -t localhost:5000/operator .
 ```
 
+---
 
 ## Cleaning
 
@@ -110,6 +111,8 @@ sudo podman push localhost:5000/operator --tls-verify=false
 kubectl get pods --all-namespaces --no-headers=true | awk '/pystol/{print $2}' | xargs  kubectl delete pod
 kubectl get jobs --all-namespaces --no-headers=true | awk '/pystol/{print $2}' | xargs  kubectl delete job
 ```
+
+---
 
 ## Deploy Pystol from the local registry
 
@@ -187,7 +190,7 @@ Now, if you deployed/updated the Pystol operator correctly,
 the containers images should be fetched from
 the local registry.
 
-![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/installing_development_environment_pystol_dashboard.PNG)
+![](https://raw.githubusercontent.com/pystol/pystol-docs/master/assets/images/02_usage.png)
 
 ### Considerations
 
@@ -196,6 +199,7 @@ and create new ones, you will need to recreate the forwarding rules.
 * If you updated a previously created deployment, you will need to kill the current pods, so
 the controller can recreate them.
 
+---
 
 ## Local development of the Web UI
 
@@ -245,6 +249,8 @@ npm run-script dev # Start the web server passing some env variable, to start th
 The webpack command should point to the URL to see the Web UI,
 by default in the port 3001.
 The API endpoints
+
+---
 
 ## Local development of the CLI and the Python operator
 
@@ -371,6 +377,8 @@ In this particular case it means that there is an user in Ansible Galaxy as
 https://galaxy.ansible.com/johndoe/tests and we will execute the
 my_custom_pystol_role role directly in the cluster.
 
+---
+
 ## Local development of the Ansible collection with the Pystol actions
 
 If you need to test your Galaxy collections before they are available
@@ -433,9 +441,11 @@ ansible-galaxy collection install --force $LATEST
 
 To finish executing the **pingtest** role installed from the previously defined source.
 
-## Open the Pods -> The executed pod -> Go bellow to the arguments section
+Open the Pods -> The executed pod -> Go bellow to the arguments section
 
 If you copy/paste the command in a node we will execute the same. For debugging purposes
+
+---
 
 ## Listing Pystol actions and retrieving execution results
 
@@ -450,6 +460,8 @@ The following command will display the particular results of a Pystol action exe
 ```bash
 pystol show-action <action_name>
 ```
+
+---
 
 ## Cleaning Pystol actions
 

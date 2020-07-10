@@ -21,6 +21,8 @@ a valid Kubeconfig file to connect to the user's cluster.
   <script id="asciicast-343265" src="https://asciinema.org/a/343265.js" async></script>
 </div>
 
+---
+
 ## Web interface
 {: .no_toc }
 <div class="center">
