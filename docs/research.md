@@ -20,6 +20,10 @@ Here you will find references for academic projects, papers, and the research in
 #### Status: Submitted to Transactions on cloud computing 'Under review'
 {: .no_toc }
 
+### Chaos in the core <br/> To be defined
+#### Status: Under development
+{: .no_toc }
+
 ## Research interests
 {: .no_toc }
 
