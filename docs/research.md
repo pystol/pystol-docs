@@ -20,7 +20,7 @@ Here you will find references for academic projects, papers, and the research in
 #### Status: Submitted to Transactions on cloud computing 'Under review'
 {: .no_toc }
 
-### Chaos in the core <br/> To be defined
+### Chaos in the core <br/> Improving software-defined and cloud-native systems resiliency for 5G core networks
 #### Status: Under development
 {: .no_toc }
 
